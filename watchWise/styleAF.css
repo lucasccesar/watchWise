@@ -1,0 +1,367 @@
+* {
+    margin: 0;
+    font-family: 'Roboto Condensed', sans-serif;
+    box-sizing: border-box;
+    font-size: 62.5%;
+    color: white;
+    text-decoration: none;
+}
+
+body{
+    overflow-x: hidden;
+    background-color: rgba(5, 21, 30, 1);
+}
+
+p{
+    font-size: 1.6rem;
+}
+
+header{
+    background-color: rgba(5, 21, 30, 1);
+    padding: 0.5vw 1vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 8rem;
+}
+
+.divSize{
+    width: 100%;
+    position: relative;
+    display: flex;
+}
+
+.divSize div:has(span){
+    display: flex;
+    align-items: center;
+    margin-right: 0.5rem;
+}
+
+.searchBtn{
+    color: white;
+    font-weight: bolder !important;
+    cursor: pointer;
+}
+
+#searchBarWrapper{
+    transition: 500ms;
+    width: 0;
+    overflow: hidden;
+}
+
+#searchBar{
+    display: flex;
+    height: 100%;
+}
+
+#searchBar input{
+    padding: 0.5rem 0 0.5rem 1rem;
+    min-width: 22.5rem;
+    font-size: 1.5rem;
+    border: none;
+    outline: none;
+    color: black;
+}
+
+#searchBar button{
+    background: none;
+    border: none;
+    margin: 0;
+    padding: 0;
+    width: fit-content;
+}
+
+#searchFor{
+    background-color: white;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    width: 2.5rem;
+    color: gray;
+    cursor: pointer;
+    font-size: 2rem;
+    justify-content: center;
+}
+
+#searchBar select{
+    min-width: 12rem;
+    font-size: 1.5rem;
+    height: 100%;
+    color: black;
+}
+
+#searchBar select option{
+    font-size: 1.5rem;
+    color: black;
+}
+
+#headerDiv{
+    display: flex;
+    align-items: center;
+    gap: 2vw;
+}
+
+header img{
+    height: 6rem;
+    cursor: pointer;
+}
+
+.divSize:has(p){
+    justify-content: end;
+    display: flex;
+}
+
+header p, header a{
+    color: white;
+    font-weight: bolder !important;
+    font-size: 2.0rem;
+    cursor: pointer;
+    width: fit-content;
+    text-decoration: none;
+}
+
+
+#bgImg {
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-position-y: 50%;
+}
+
+.fechadoImg{
+    height: 75vh;
+}
+
+.abertoImg{
+    height: 100vh;
+    transition: 500ms;
+}
+
+.iframeFechado{
+    height: 0px;
+    width: 0px;
+    display: none;
+}
+
+.iframeAberto{
+    visibility: visible;
+    transition: 500ms;
+    width: 1500px;
+    height: 843px;
+}
+
+#bgColor {
+    background-color: rgba(5, 21, 30, 1);
+}
+
+main {
+    width: 80%;
+    height: max-content;
+    margin: auto;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 100000;
+}
+
+.top200{
+    top: -200px;
+}
+
+.top{
+    top: 0px;
+    transition: 500ms;
+}
+
+#diretores {
+    display: flex;
+    gap: 20px;
+    color: #fff;
+    text-shadow: 1px 1px 0 #000, -1px 1px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000;
+}
+
+#nome {
+    font-weight: bold;
+    font-size: 4rem;
+    color: #fff;
+    text-shadow: 1px 1px 0 #000, -1px 1px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000;
+}
+
+#generos {
+    display: flex;
+    gap: 5px;
+}
+
+.genero {
+    border: white 1px solid;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 5px;
+    font-weight: bold;
+    backdrop-filter: blur(10px);
+}
+
+#telas {
+    margin-top: 10px;
+    display: flex;
+    gap: 10px;
+}
+
+#play {
+    width: 100%;
+    border-radius: 20px;
+    border: none;
+    background-color: #38a935;
+}
+
+#play:hover{
+    cursor: pointer;
+    background-color: #2c8529;
+}
+
+.material-symbols-rounded {
+    font-variation-settings: 'FILL' 1, 'wght' 700, 'GRAD' 0, 'opsz' 24;
+}
+
+#playArrow {
+    font-size: 6rem;
+}
+
+.tela {
+    background-color: rgba(255, 255, 255, 0.1);
+    width: 100%;
+    height: 130px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    backdrop-filter: blur(5px);
+}
+
+.info {
+    font-weight: bold;
+    font-size: 3rem;
+    text-align: center;
+}
+
+.titulo {
+    color: darkgray;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+.description {
+    color: #404d53;
+    font-weight: bold;
+    font-size: 2rem;
+}
+
+#cast{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.face {
+    width: 100px;
+    height: 100px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position-y: -10px;
+    border-radius: 100%;
+}
+
+.guest{
+    width: 100px;
+    height: 100px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 100%;
+}
+
+.actor {
+    display: flex;
+    flex-direction: column;
+    width: min-content;
+    align-items: center;
+    gap: 7px;
+    font-weight: bold;
+    text-align: center;
+}
+
+#similarMovies {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: space-between;
+}
+
+.imagem{
+    width: 200px;
+    height: 300px;
+    cursor: pointer;
+}
+
+.movie-info{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 82px;
+}
+
+.movie-info h3{
+    font-size: 1.5rem;
+}
+
+.movie-info span{
+    background-color: #060607;
+    border-radius: 10px;
+    padding: 10px 15px;
+}
+
+.green{
+    color: green;
+}
+
+.orange{
+    color: orange;
+}
+
+.red{
+    color: red;
+}
+
+.movie{
+    font-family: 'Raleway';
+    width: min-content;
+    display: flex;
+    flex-direction: column;
+}
+
+.gradient-border {
+    --borderWidth: 3px;
+    background: #0F1315;
+    color: white;
+    position: relative;
+    border-radius: var(--borderWidth);
+}
+
+.gradient-border:after {
+    content: '';
+    position: absolute;
+    top: calc(-1 * var(--borderWidth));
+    left: calc(-1 * var(--borderWidth));
+    height: calc(100% + var(--borderWidth) * 2);
+    width: calc(100% + var(--borderWidth) * 2);
+    background: linear-gradient(60deg, #5073b8, #1098ad, #07b39b, #6fba82);
+    border-radius: calc(2 * var(--borderWidth));
+    z-index: -1;
+}

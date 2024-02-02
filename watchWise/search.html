@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>WatchWise</title>
+        <link rel="stylesheet" href="../watchWise.css" />
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,1,0" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+        <link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/256/183/183341.png" type="image/x-icon" />
+    </head>
+    <body>
+        <header style="border-bottom: 1px solid rgb(15, 29, 37);">
+            <div class="divSize">
+                <div id="expandSearch">
+                    <span class="material-symbols-rounded searchBtn">search</span>
+                </div>
+                <div id="searchBarWrapper">
+                    <form method="get" action="search.html" id="searchBar">
+                        <input type="text" placeholder="What are you looking for?" name="query" autocomplete="off"/>    
+                        <button type="submit"><span class="material-symbols-rounded" id="searchFor">search</span></button>
+                        <select name="media_type" id="">
+                            <option value="moviesAndShows">Movies & Shows</option>
+                            <option value="movies">Movies</option>
+                            <option value="shows">Shows</option>
+                        </select>
+                    </form>
+                </div>
+            </div>
+            <div id="headerDiv">
+                <a href="movies.html">Movies</a>
+                <img src="https://cdn-icons-png.flaticon.com/256/183/183341.png" alt="" onclick="window.location.href = '/watchWise.html'" />
+                <a href="shows.html">Shows</a>
+            </div>
+            <div class="divSize">
+                <p>Sign In</p>
+            </div>
+        </header>
+        <div id="lower">
+            <p id="resultsTitle">Results For: </p>
+            <div id="searchResults"></div>
+        </div>
+    </body>
+    <script src="./search.js"></script>
+</html>

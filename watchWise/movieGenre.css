@@ -1,0 +1,209 @@
+* {
+    margin: 0;
+    font-family: 'Roboto Condensed', sans-serif;
+    box-sizing: border-box;
+    font-size: 62.5%;
+}
+
+body{
+    overflow-x: hidden;
+    background-color: rgba(5, 21, 30, 1);
+}
+
+header{
+    background-color: rgba(5, 21, 30, 1);
+    padding: 0.5vw 1vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 8rem;
+    border-bottom: 1px solid rgb(15, 29, 37);
+}
+
+.divSize{
+    width: 100%;
+    position: relative;
+    display: flex;
+}
+
+.divSize div:has(span){
+    display: flex;
+    align-items: center;
+    margin-right: 0.5rem;
+}
+
+.searchBtn{
+    color: white;
+    font-weight: bolder !important;
+    cursor: pointer;
+}
+
+#searchBarWrapper{
+    transition: 500ms;
+    width: 0;
+    overflow: hidden;
+}
+
+#searchBar{
+    display: flex;
+    height: 100%;
+}
+
+#searchBar input{
+    padding: 0.5rem 0 0.5rem 1rem;
+    min-width: 22.5rem;
+    font-size: 1.5rem;
+    border: none;
+    outline: none;
+}
+
+#searchBar button{
+    background: none;
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+
+#searchFor{
+    background-color: white;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    width: 2.5rem;
+    color: gray;
+    cursor: pointer;
+    font-size: 2rem;
+    justify-content: center;
+}
+
+#searchBar select{
+    min-width: 12rem;
+    font-size: 1.5rem;
+    height: 100%;
+}
+
+#searchBar select option{
+    font-size: 1.5rem;
+}
+
+#headerDiv{
+    display: flex;
+    align-items: center;
+    gap: 2vw;
+}
+
+header img{
+    height: 6rem;
+    cursor: pointer;
+}
+
+.divSize:has(p){
+    justify-content: end;
+    display: flex;
+}
+
+header p, header a{
+    color: white;
+    font-weight: bolder !important;
+    font-size: 2.0rem;
+    cursor: pointer;
+    width: fit-content;
+    text-decoration: none;
+}
+
+#lowerHeader{
+    display: flex;
+    width: 80vw;
+    margin: 45px 0;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.hidden{
+    visibility: hidden;
+}
+
+#movies{
+    display: flex;
+    width: 80vw;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: auto;
+}
+
+.movie{
+    width: min-content;
+    cursor: pointer;
+    margin-bottom: 25px;
+}
+
+.movieBackdrop{
+    aspect-ratio: 1485 / 835;
+    width: 365px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 10px;
+}
+
+.movieInfo{
+    font-size: 22px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 10px;
+    max-height: 47px;
+    box-sizing: border-box;
+}
+
+.title{
+    color: white;
+    font-weight: bold;
+    font-size: 2.2rem;
+}
+
+#genre{
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#back{
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#pages{
+    width: fit-content;
+    margin: 40px auto 60px;
+    display: flex;
+    color: white;
+    align-items: center;
+    gap: 10px;
+    font-weight: bold;
+}
+
+#pages p{
+    font-size: 1.6rem;
+}
+
+.pageBtn{
+    border: none;
+    background-color: #FFFFFF00;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    height: fit-content;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.pageSelected{
+    background-color: white;
+    color: rgba(5, 21, 30, 1);
+}
+

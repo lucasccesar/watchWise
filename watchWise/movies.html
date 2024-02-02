@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>WatchWise Movies</title>
+        <link rel="stylesheet" href="../watchWise.css" />
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,1,0" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+        <link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/256/183/183341.png" type="image/x-icon" />
+    </head>
+    <body>
+        <header>
+            <div class="divSize">
+                <div id="expandSearch">
+                    <span class="material-symbols-rounded searchBtn">search</span>
+                </div>
+                <div id="searchBarWrapper">
+                    <form method="get" action="search.html" id="searchBar">
+                        <input type="text" placeholder="What are you looking for?" name="query" autocomplete="off"/>    
+                        <button type="submit"><span class="material-symbols-rounded" id="searchFor">search</span></button>
+                        <select name="media_type" id="">
+                            <option value="moviesAndShows">Movies & Shows</option>
+                            <option value="movies" selected>Movies</option>
+                            <option value="shows">Shows</option>
+                        </select>
+                    </form>
+                </div>
+            </div>
+            <div id="headerDiv">
+                <a href="movies.html">Movies</a>
+                <img src="https://cdn-icons-png.flaticon.com/256/183/183341.png" alt="" onclick="window.location.href = '/watchWise.html'" />
+                <a href="shows.html">Shows</a>
+            </div>
+            <div class="divSize">
+                <p>Sign In</p>
+            </div>
+        </header>
+        <div id="upper">
+            <div id="suggestions">
+                <div class="btn"><div class="btnLoading"></div></div>
+                <div class="btn"><div></div></div>
+                <div class="btn"><div></div></div>
+                <div class="btn"><div></div></div>
+            </div>
+            <div id="movies" class="delay"></div>
+        </div>
+        <div id="lower">
+            <div id="trending" class="genres">
+                <div id="trendingNow" class="genresUpper">
+                    <p class="centerText">
+                        Trending Now</svg>
+                    </p>
+                    <div class="pageCount">
+                        <div class="pageCounts selecionada"></div>
+                        <div class="pageCounts"></div>
+                        <div class="pageCounts"></div>
+                        <div class="pageCounts"></div>
+                        <div class="pageCounts"></div>
+                    </div>
+                </div>
+                <div id="trendingMoviesBox" class="genresLower">
+                    <button class="pass previous hidden"><span class="material-symbols-rounded" style="font-size: 70px"> arrow_back_ios </span></button>
+                    <div id="trendingMovies" class="genresMovies"></div>
+                    <button class="pass next hidden"><span class="material-symbols-rounded" style="font-size: 70px"> arrow_forward_ios </span></button>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script src="./movies.js"></script>
+</html>
