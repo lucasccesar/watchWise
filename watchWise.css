@@ -20,7 +20,8 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 17vw;
+    height: 10vh;
+    position: relative;
 }
 
 .divSize {
@@ -43,25 +44,26 @@ header {
 }
 
 #searchBarWrapper {
+    display: none;
     transition: 500ms;
     width: 0;
     overflow: hidden;
 }
 
-#searchBar {
+.searchBar {
     display: flex;
     height: 100%;
 }
 
-#searchBar input {
+.searchBar input {
     padding: 0.5rem 0 0.5rem 1rem;
-    min-width: 22.5rem;
-    font-size: 1.5rem;
+    min-width: 45vw;
+    font-size: calc(0.5rem + 2vw);
     border: none;
     outline: none;
 }
 
-#searchBar button {
+.searchBar button {
     background: none;
     border: none;
     margin: 0;
@@ -73,21 +75,20 @@ header {
     height: 100%;
     display: flex;
     align-items: center;
-    width: 2.5rem;
+    width: 7vw;
     color: gray;
     cursor: pointer;
     font-size: 2rem;
     justify-content: center;
 }
 
-#searchBar select {
-    min-width: 12rem;
-    font-size: 1.5rem;
-    height: 100%;
+.searchBar select {
+    min-width: 29vw;
+    font-size: calc(0.5rem + 2vw);
 }
 
-#searchBar select option {
-    font-size: 1.5rem;
+.searchBar select option {
+    font-size: calc(0.5rem + 2vw);
 }
 
 #headerDiv {
@@ -116,6 +117,16 @@ header a {
     text-decoration: none;
 }
 
+#searchBarWrapperMobile {
+    transition: 500ms;
+    width: 0;
+    overflow: hidden;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+}
+
 #upper {
     position: relative;
 }
@@ -130,7 +141,7 @@ header a {
 #suggestionsWrapper {
     z-index: 1000;
     width: 100vw;
-    height: 40vh;
+    height: 72vw;
     position: absolute;
     top: 0;
     left: 0;
@@ -248,7 +259,7 @@ header a {
 
 .filme {
     width: 100vw;
-    height: 40vh;
+    height: 72vw;
     background-repeat: no-repeat;
     background-size: cover;
     display: flex;
@@ -309,7 +320,7 @@ header a {
     gap: 5px;
 }
 
-.centerText p{
+.centerText p {
     max-width: 45vw;
     width: fit-content;
 }
@@ -377,7 +388,7 @@ header a {
     border-radius: 10px;
 }
 
-.scrollPositionWrapper{
+.scrollPositionWrapper {
     width: 30vw;
     height: 2px;
     background-color: rgba(255, 255, 255, 0.3);
@@ -387,7 +398,7 @@ header a {
     align-items: center;
 }
 
-.scrollPosition{
+.scrollPosition {
     position: absolute;
     width: 4vw;
     height: 4px;
@@ -462,13 +473,13 @@ header a {
 }
 
 .movieInfo .title {
-    font-size: 1.2rem !important;
+    font-size: calc(0.5rem + 2vw) !important;
     font-weight: normal;
     max-width: 90%;
 }
 
 .movieInfo svg {
-    height: 1.2rem !important;
+    height: calc(0.5rem + 2vw) !important;
 }
 
 #resultsTitle {

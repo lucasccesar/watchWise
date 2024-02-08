@@ -35,12 +35,22 @@ let currentMovie = 0;
 var genresMovies = document.querySelectorAll('.genresMovies');
 
 expandSearch.addEventListener('click', () => {
-    if (isSearchExpanded) {
-        document.getElementById('searchBarWrapper').style.width = '0rem';
-        isSearchExpanded = false;
+    if (window.getComputedStyle(document.getElementById('searchBarWrapper')).getPropertyValue('display') != 'none') {
+        if (isSearchExpanded) {
+            document.getElementById('searchBarWrapper').style.width = '0rem';
+            isSearchExpanded = false;
+        } else {
+            document.getElementById('searchBarWrapper').style.width = '37rem';
+            isSearchExpanded = true;
+        }
     } else {
-        document.getElementById('searchBarWrapper').style.width = '37rem';
-        isSearchExpanded = true;
+        if (isSearchExpanded) {
+            document.getElementById('searchBarWrapperMobile').style.width = '0vw';
+            isSearchExpanded = false;
+        } else {
+            document.getElementById('searchBarWrapperMobile').style.width = '81vw';
+            isSearchExpanded = true;
+        }
     }
 });
 
@@ -91,7 +101,7 @@ async function main() {
         }
     }
 
-    console.log(genresMoviesTv)
+    console.log(genresMoviesTv);
 
     for (let i = discoverOrder.length; i > 4; i--) {
         discoverOrder.pop();
