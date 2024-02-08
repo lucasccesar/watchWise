@@ -27,7 +27,12 @@ var resultsImgs = [];
 const genresArray = ['Action', 'Romance', 'Adventure', 'Family', 'Comedy', 'Science Fiction'];
 let expandSearch = document.getElementById('expandSearch');
 let isSearchExpanded = false;
-let search = document.querySelector('#searchBar')
+let search = document.querySelector('#searchBar');
+let startPoint = 0;
+let drag = 0;
+let slider = document.querySelector('#movies');
+let currentMovie = 0;
+var genresMovies = document.querySelectorAll('.genresMovies');
 
 expandSearch.addEventListener('click', () => {
     if (isSearchExpanded) {
@@ -38,8 +43,6 @@ expandSearch.addEventListener('click', () => {
         isSearchExpanded = true;
     }
 });
-
-
 
 async function main() {
     var discover = await fetch(`https://api.themoviedb.org/3/trending/movie/day?language=en-US`, options).then((response) => response.json());
@@ -78,7 +81,7 @@ async function main() {
 
     var genresMoviesTv = [];
 
-    for (let i = 0; i < 32; i++) {
+    for (let i = 0; i < 15; i++) {
         if (i % 2 == 0) {
             genresMoviesTv[genresMoviesTv.length] = genresObjectResults[Math.floor(i / 2)];
             genresMoviesTv[genresMoviesTv.length - 1].type = 'movie';
@@ -87,6 +90,8 @@ async function main() {
             genresMoviesTv[genresMoviesTv.length - 1].type = 'tv';
         }
     }
+
+    console.log(genresMoviesTv)
 
     for (let i = discoverOrder.length; i > 4; i--) {
         discoverOrder.pop();
@@ -174,7 +179,10 @@ async function main() {
             <div class="genresUpper">
             <div class="genreDiv">
                 <div class="genreAbsolute" data-genre-id="${genresMoviesTv[key].id}" data-genre-name="${genresMoviesTv[key].name}" data-genre-type='movie'></div>
-                    <p class="centerText">${genresMoviesTv[key].name} Movies<svg xmlns="http://www.w3.org/2000/svg" height="24" width="24"><path d="M6.75 21.5q-.525-.525-.525-1.288 0-.762.525-1.287L13.675 12l-6.95-6.95q-.525-.525-.537-1.275-.013-.75.537-1.3.525-.525 1.287-.525.763 0 1.288.525l8.425 8.425q.225.225.337.512.113.288.113.588t-.113.587q-.112.288-.337.513L9.3 21.525q-.525.525-1.262.525-.738 0-1.288-.55Z" /></svg>
+                    <div class="centerText">
+                        <p>${genresMoviesTv[key].name} Movies</p>
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24"><path d="M6.75 21.5q-.525-.525-.525-1.288 0-.762.525-1.287L13.675 12l-6.95-6.95q-.525-.525-.537-1.275-.013-.75.537-1.3.525-.525 1.287-.525.763 0 1.288.525l8.425 8.425q.225.225.337.512.113.288.113.588t-.113.587q-.112.288-.337.513L9.3 21.525q-.525.525-1.262.525-.738 0-1.288-.55Z" /></svg>  
+                    </div>
                     <div class="genreBar"></div>
                 </div>
                 <div class="pageCount">
@@ -183,6 +191,9 @@ async function main() {
                     <div class="pageCounts"></div>
                     <div class="pageCounts"></div>
                     <div class="pageCounts"></div>
+                </div>
+                <div class="scrollPositionWrapper">
+                    <div class="scrollPosition"></div>
                 </div>
             </div>
             <div class="genresLower">
@@ -194,7 +205,7 @@ async function main() {
 
             lower.appendChild(divGenre);
             let genresMovies = document.querySelectorAll('.genresMoviesOnly');
-            showMovies(genresMoviesTv[key].name, key, genresMovies[Math.floor(parseInt(key)/2)], genresMoviesTv[key].id, genresMoviesTv[key].type);
+            showMovies(genresMoviesTv[key].name, key, genresMovies[Math.floor(parseInt(key) / 2)], genresMoviesTv[key].id, genresMoviesTv[key].type);
         } else if (genresMoviesTv[key].type == 'tv') {
             let divGenre = document.createElement('div');
             divGenre.classList.add('genres');
@@ -202,7 +213,10 @@ async function main() {
             <div class="genresUpper">
             <div class="genreDiv">
                 <div class="genreAbsolute" data-genre-id="${genresMoviesTv[key].id}" data-genre-name="${genresMoviesTv[key].name}" data-genre-type='tv'></div>
-                    <p class="centerText">${genresMoviesTv[key].name} Shows <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24"><path d="M6.75 21.5q-.525-.525-.525-1.288 0-.762.525-1.287L13.675 12l-6.95-6.95q-.525-.525-.537-1.275-.013-.75.537-1.3.525-.525 1.287-.525.763 0 1.288.525l8.425 8.425q.225.225.337.512.113.288.113.588t-.113.587q-.112.288-.337.513L9.3 21.525q-.525.525-1.262.525-.738 0-1.288-.55Z" /></svg>
+                    <div class="centerText">
+                        <p>${genresMoviesTv[key].name} Movies</p>
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24"><path d="M6.75 21.5q-.525-.525-.525-1.288 0-.762.525-1.287L13.675 12l-6.95-6.95q-.525-.525-.537-1.275-.013-.75.537-1.3.525-.525 1.287-.525.763 0 1.288.525l8.425 8.425q.225.225.337.512.113.288.113.588t-.113.587q-.112.288-.337.513L9.3 21.525q-.525.525-1.262.525-.738 0-1.288-.55Z" /></svg>  
+                    </div>
                     <div class="genreBar"></div>
                 </div>
                 <div class="pageCount">
@@ -211,6 +225,9 @@ async function main() {
                     <div class="pageCounts"></div>
                     <div class="pageCounts"></div>
                     <div class="pageCounts"></div>
+                </div>
+                <div class="scrollPositionWrapper">
+                    <div class="scrollPosition"></div>
                 </div>
             </div>
             <div class="genresLower">
@@ -222,7 +239,7 @@ async function main() {
 
             lower.appendChild(divGenre);
             let genresShows = document.querySelectorAll('.genresShowsOnly');
-            showMovies(genresMoviesTv[key].name, key, genresShows[Math.floor(parseInt(key)/2)], genresMoviesTv[key].id, genresMoviesTv[key].type);
+            showMovies(genresMoviesTv[key].name, key, genresShows[Math.floor(parseInt(key) / 2)], genresMoviesTv[key].id, genresMoviesTv[key].type);
         }
     });
 
@@ -259,6 +276,50 @@ async function main() {
     });
 
     setInterval(constant, 1);
+
+    slider.addEventListener('touchstart', onTouchStart);
+    slider.addEventListener('touchend', onTouchEnd);
+
+    slider.addEventListener('click', (event) => {
+        console.log(event.target);
+    });
+}
+
+function onTouchStart(event) {
+    slider.classList.remove('delay');
+    startPoint = event.touches[0].clientX;
+    console.log(startPoint);
+    slider.addEventListener('touchmove', onTouchMove);
+}
+
+function onTouchMove(event) {
+    if (event.touches[0].clientX - startPoint < 0 && currentMovie < 3) {
+        slider.style.transform = `translateX(${event.touches[0].clientX - startPoint - slider.offsetWidth * currentMovie}px)`;
+    } else if (event.touches[0].clientX - startPoint > 0 && currentMovie > 0) {
+        slider.style.transform = `translateX(${event.touches[0].clientX - startPoint - slider.offsetWidth * currentMovie}px)`;
+    }
+    drag = event.touches[0].clientX - startPoint;
+}
+
+function onTouchEnd(event) {
+    let sliderPosition = document.querySelectorAll('.btn');
+    slider.removeEventListener('touchmove', onTouchMove);
+    if (drag < -120 && currentMovie < 3) {
+        slider.classList.add('delay');
+        slider.style.transform = `translateX(-${100 * (currentMovie + 1)}vw)`;
+        sliderPosition[currentMovie].classList.remove('currentBtn');
+        sliderPosition[currentMovie + 1].classList.add('currentBtn');
+        currentMovie++;
+    } else if (drag > 120 && currentMovie > 0) {
+        slider.classList.add('delay');
+        slider.style.transform = `translateX(-${100 * (currentMovie - 1)}vw)`;
+        sliderPosition[currentMovie].classList.remove('currentBtn');
+        sliderPosition[currentMovie - 1].classList.add('currentBtn');
+        currentMovie--;
+    } else {
+        slider.classList.add('delay');
+        slider.style.transform = `translateX(-${100 * currentMovie}vw)`;
+    }
 }
 
 function openGenre(event) {
@@ -269,7 +330,7 @@ function openGenre(event) {
 }
 
 async function showMovies(genre, index, element, genreId, type) {
-    if(type == 'movie'){
+    if (type == 'movie') {
         let resultsObj = await fetch(`https://api.themoviedb.org/3/discover/movie?sort_by=vote_count.desc&with_genres=${genreId}`, options).then((response) => response.json());
         let results = resultsObj.results;
         for (let i = 0; i < results.length / 4; i++) {
@@ -283,7 +344,7 @@ async function showMovies(genre, index, element, genreId, type) {
                 divMovies.classList.add('movie');
                 divMovies.addEventListener('click', openR);
                 divMovies.dataset.id = `${results[j + i * 4].id}`;
-                divMovies.dataset.type = type
+                divMovies.dataset.type = type;
                 let movieImgCount = 0;
                 let movieImg = await fetch(`https://api.themoviedb.org/3/movie/${results[j + i * 4].id}/images`, options).then((response) => response.json());
                 for (let i = 0; i < movieImg.backdrops.length; i++) {
@@ -307,7 +368,7 @@ async function showMovies(genre, index, element, genreId, type) {
             element.dataset.currentTranslate = '0';
             element.appendChild(div);
         }
-    } else if(type == 'tv'){
+    } else if (type == 'tv') {
         let resultsObj = await fetch(`https://api.themoviedb.org/3/discover/tv?sort_by=vote_count.desc&with_genres=${genreId}`, options).then((response) => response.json());
         let results = resultsObj.results;
         for (let i = 0; i < results.length / 4; i++) {
@@ -321,7 +382,7 @@ async function showMovies(genre, index, element, genreId, type) {
                 divMovies.classList.add('movie');
                 divMovies.addEventListener('click', openR);
                 divMovies.dataset.id = `${results[j + i * 4].id}`;
-                divMovies.dataset.type = type
+                divMovies.dataset.type = type;
                 let movieImgCount = 0;
                 let movieImg = await fetch(`https://api.themoviedb.org/3/tv/${results[j + i * 4].id}/images`, options).then((response) => response.json());
                 for (let i = 0; i < movieImg.backdrops.length; i++) {
@@ -456,7 +517,16 @@ function openR(event) {
     }
 }
 
+function scrollHandler(e) {
+    let porcentagem = (e.scrollWidth - e.offsetWidth) / 100;
+    e.parentElement.previousElementSibling.lastElementChild.firstElementChild.style.left = `${e.scrollLeft / porcentagem}%`;
+}
+
 function constant() {
+    genresMovies = document.querySelectorAll('.genresMovies');
+    genresMovies.forEach((e) => {
+        e.addEventListener('scroll', scrollHandler(e));
+    });
     width = body.offsetWidth;
     let movieSla = movies.getBoundingClientRect();
     if (movieSla.left == -(width * 4)) {
@@ -471,7 +541,7 @@ function constant() {
     loading.style.width = `${ms / 15}%`;
     if (ms / 15 == 100) {
         ms = 0;
-        trocar();
+        /* trocar(); */
     }
 }
 

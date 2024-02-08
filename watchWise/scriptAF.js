@@ -31,10 +31,10 @@ const iframe = document.getElementById('iframe');
 const mainHtml = document.querySelector('main');
 var similarFull = [];
 var similar = [];
-const similarMovies = document.getElementById("similarMovies")
+const similarMovies = document.getElementById('similarMovies');
 let expandSearch = document.getElementById('expandSearch');
 let isSearchExpanded = false;
-let search = document.querySelector('#searchBar')
+let search = document.querySelector('#searchBar');
 
 expandSearch.addEventListener('click', () => {
     if (isSearchExpanded) {
@@ -50,16 +50,16 @@ async function main() {
     var info = await fetch(`https://api.themoviedb.org/3/movie/${movieId}?language=en-US`, options).then((response) => response.json());
     nome.innerText = info.title;
 
-    window.top.document.title = "Watch " +  info.title
-    
+    window.top.document.title = 'Watch ' + info.title;
+
     var img = await fetch(`https://api.themoviedb.org/3/movie/${movieId}/images`, options).then((response) => response.json());
-    
+
     var foto = img.backdrops[0].file_path;
     var fotoLink = imgUrl + foto;
     bgImg.style.backgroundImage = `-webkit-linear-gradient(bottom, rgba(5, 21, 30, 1) 0%, rgba(0, 0, 0, 0) 30%), url('${fotoLink}')`;
-    
+
     var credits = await fetch(`https://api.themoviedb.org/3/movie/${movieId}/credits?language=en-US`, options).then((response) => response.json());
-    
+
     for (let i = 0; i < credits.crew.length; i++) {
         if (credits.crew[i].job == 'Director' && diretores.length < 2) {
             diretores[diretores.length] = credits.crew[i].name;
@@ -70,7 +70,6 @@ async function main() {
         d.innerText = e;
         diretor.appendChild(d);
     });
-    
 
     info.genres.forEach((e) => {
         var genero = document.createElement('p');
@@ -139,11 +138,9 @@ async function main() {
     uniqueSet = new Set(jsonObject);
     uniqueSimilar = Array.from(uniqueSet).map(JSON.parse);
 
-    for(let i=uniqueSimilar.length; i>7; i--){
-        uniqueSimilar.pop()
+    for (let i = uniqueSimilar.length; i > 7; i--) {
+        uniqueSimilar.pop();
     }
-
-    console.log(uniqueSimilar);
 
     uniqueSimilar.forEach((movie) => {
         const { title, poster_path, vote_average, id } = movie;
@@ -184,41 +181,8 @@ function abrir() {
     mainHtml.classList.replace('top200', 'top');
 }
 
-function abrirSimilar(event){
+function abrirSimilar(event) {
     var similarMovieId = event.target.offsetParent.id;
-    site = "assistirFilmes.html?id=" + similarMovieId;
+    site = 'assistirFilmes.html?id=' + similarMovieId;
     window.location.href = site;
 }
-
-/* const urlParams = new URLSearchParams(window.location.search);
-const movieId = urlParams.get('id');
-const body = document.querySelector("body")
-const vidsrc = "https://vidsrc.to/embed/movie/"
-
-function getIP(){
-    var ip = fetch('https://api.ipify.org?format=json')
-   .then(response => response.json())
-   .then(data => data.ip);
-
-   return ip
-}
-
-async function main() {
-    var ip = await getIP()
-    console.log(ip)
-    if(ip=='179.189.246.61'){
-        console.log("alou")
-    } else{
-        console.log("intruso")
-    }
-}
-
-main()
-
-var iframe = document.createElement("iframe")
-iframe.src = vidsrc + movieId
-iframe.height = "500"
-iframe.width = "900"
-iframe.title = "filme"
-body.appendChild(iframe)
- */

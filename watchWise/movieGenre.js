@@ -27,7 +27,7 @@ window.top.document.title = `${genreName} ${type == 'movie' ? 'Movies' : 'Shows'
 
 let expandSearch = document.getElementById('expandSearch');
 let isSearchExpanded = false;
-let search = document.querySelector('#searchBar')
+let search = document.querySelector('#searchBar');
 
 expandSearch.addEventListener('click', () => {
     if (isSearchExpanded) {

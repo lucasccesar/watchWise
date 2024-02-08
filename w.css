@@ -5,10 +5,6 @@
     font-size: 62.5%;
 }
 
-html {
-    overflow-x: hidden;
-}
-
 body {
     overflow-x: hidden;
     background-color: rgba(5, 21, 30, 1);
@@ -16,11 +12,11 @@ body {
 
 header {
     background-color: rgba(5, 21, 30, 1);
-    padding: 1vw 3vw;
+    padding: 0.5vw 1vw;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 17vw;
+    height: 8rem;
 }
 
 .divSize {
@@ -37,7 +33,6 @@ header {
 
 .searchBtn {
     color: white;
-    font-size: 2.2rem !important;
     font-weight: bolder !important;
     cursor: pointer;
 }
@@ -93,11 +88,11 @@ header {
 #headerDiv {
     display: flex;
     align-items: center;
-    gap: 4vw;
+    gap: 2vw;
 }
 
 header img {
-    height: 5rem;
+    height: 6rem;
     cursor: pointer;
 }
 
@@ -110,7 +105,7 @@ header p,
 header a {
     color: white;
     font-weight: bolder !important;
-    font-size: 1.5rem;
+    font-size: 2rem;
     cursor: pointer;
     width: fit-content;
     text-decoration: none;
@@ -127,46 +122,19 @@ header a {
     z-index: 2;
 }
 
-#suggestionsWrapper {
-    z-index: 1000;
-    width: 100vw;
-    height: 40vh;
-    position: absolute;
-    top: 0;
-    left: 0;
-    display: flex;
-    justify-content: center;
-    align-items: end;
-    pointer-events: none;
-}
-
-#suggestionsMobile {
-    display: flex;
-    height: min-content;
-    gap: 0.5rem;
-    margin-bottom: 2vw;
-}
-
 #suggestions {
-    display: none;
     height: min-content;
-    gap: 0.5rem;
-    margin-bottom: 2vw;
+    display: flex;
+    gap: 10px;
+    margin: 0px 10% 2% 0px;
 }
 
 .btn {
-    width: 4rem !important;
-    height: 0.3rem !important;
+    width: 7.5rem;
+    height: 0.5rem;
     background-color: rgba(255, 255, 255, 0.3);
     border-radius: 1rem;
     cursor: pointer;
-}
-
-.currentBtn {
-    height: 100%;
-    width: 100%;
-    background-color: rgba(255, 255, 255, 1);
-    border-radius: 1rem;
 }
 
 .btnLoading {
@@ -183,7 +151,7 @@ header a {
 }
 
 .delay {
-    transition: 600ms;
+    transition: 1000ms;
 }
 
 .instant {
@@ -200,11 +168,9 @@ header a {
 }
 
 .infoInner {
-    display: none;
-
     width: fit-content;
     margin-bottom: 2%;
-    /* display: flex; */
+    display: flex;
     flex-direction: column;
     gap: 25px;
     background-color: rgba(0, 0, 0, 0.2);
@@ -248,29 +214,23 @@ header a {
 
 .filme {
     width: 100vw;
-    height: 40vh;
+    height: 80vh;
     background-repeat: no-repeat;
     background-size: cover;
     display: flex;
     justify-content: center;
     align-items: flex-end;
-    background-position-x: 50%;
-    background-position-y: 50%;
 }
 
 #lower {
     height: fit-content;
-    width: 90vw;
-    margin: auto;
+    width: 153rem;
+    margin: 6rem auto;
     color: white;
 }
 
-#trending {
-    margin-top: 6vh;
-}
-
 .genres {
-    margin-top: 6vw;
+    margin-top: 5rem;
 }
 
 .genresLower {
@@ -283,7 +243,6 @@ header a {
 }
 
 .pass {
-    display: none;
     border: none;
     z-index: 2;
     width: 16.5rem;
@@ -307,15 +266,6 @@ header a {
     display: flex;
     align-items: center;
     gap: 5px;
-}
-
-.centerText p{
-    max-width: 45vw;
-    width: fit-content;
-}
-
-.centerText svg {
-    font-size: 1rem !important;
 }
 
 .genreDiv {
@@ -353,7 +303,7 @@ header a {
 }
 
 .genres p {
-    font-size: 2rem;
+    font-size: 30px;
     font-weight: bold;
 }
 
@@ -361,40 +311,20 @@ header a {
     display: flex;
     width: 100%;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-end;
 }
 
 .pageCount {
-    display: none;
+    display: flex;
     height: fit-content;
     gap: 4px;
 }
 
 .pageCounts {
-    width: 5vw;
+    width: 30px;
     height: 3px;
     background-color: rgba(255, 255, 255, 0.3);
     border-radius: 10px;
-}
-
-.scrollPositionWrapper{
-    width: 30vw;
-    height: 2px;
-    background-color: rgba(255, 255, 255, 0.3);
-    border-radius: 10px;
-    position: relative;
-    display: flex;
-    align-items: center;
-}
-
-.scrollPosition{
-    position: absolute;
-    width: 4vw;
-    height: 4px;
-    background-color: rgba(255, 255, 255);
-    border-radius: 10px;
-    transform: translateX(-50%);
-    z-index: 1000;
 }
 
 .selecionada {
@@ -420,24 +350,15 @@ header a {
 
 .partitions {
     display: flex;
-    gap: 3vw;
-}
-
-.partitionsFirst {
-    margin-left: 5vw;
+    gap: 3rem;
+    width: 153rem;
 }
 
 .genresMovies {
     transition: 1s;
     display: flex;
-    gap: 3vw;
-    overflow-y: scroll;
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-}
-
-.genresMovies::-webkit-scrollbar {
-    display: none;
+    margin-left: 19.5rem;
+    gap: 3rem;
 }
 
 .movie {
@@ -455,20 +376,16 @@ header a {
 
 .movieBackdrop {
     aspect-ratio: 1485 / 835;
-    width: 43vw;
+    width: 36rem;
     background-size: cover;
     background-repeat: no-repeat;
     border-radius: 10px;
 }
 
 .movieInfo .title {
-    font-size: 1.2rem !important;
+    font-size: 22px !important;
     font-weight: normal;
     max-width: 90%;
-}
-
-.movieInfo svg {
-    height: 1.2rem !important;
 }
 
 #resultsTitle {

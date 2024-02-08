@@ -7,10 +7,10 @@ const API_KEY = 'api_key=59fa1df362aba6e085744095198c2402';
 const BASE_URL = 'https://api.themoviedb.org/3';
 const API_URL = BASE_URL + '/discover/movie?sort_by=popularity.desc&' + API_KEY;
 const IMG_URL = 'https://image.tmdb.org/t/p/original';
-const div = document.getElementById('searchResults')
-const title = document.getElementById('resultsTitle')
+const div = document.getElementById('searchResults');
+const title = document.getElementById('resultsTitle');
 
-title.innerText = `Results For: ${query}`
+title.innerText = `Results For: ${query}`;
 
 const options = {
     method: 'GET',
@@ -22,7 +22,7 @@ const options = {
 
 let expandSearch = document.getElementById('expandSearch');
 let isSearchExpanded = false;
-let search = document.querySelector('#searchBar')
+let search = document.querySelector('#searchBar');
 
 expandSearch.addEventListener('click', () => {
     if (isSearchExpanded) {
@@ -35,32 +35,31 @@ expandSearch.addEventListener('click', () => {
 });
 
 async function main() {
-    let resultsMovies = await fetch(`https://api.themoviedb.org/3/search/movie?query=${query}&page=1`, options).then((response) => response.json())
-    resultsMovies.results.forEach(element => {
-        element.media_type = 'movie'
+    let resultsMovies = await fetch(`https://api.themoviedb.org/3/search/movie?query=${query}&page=1`, options).then((response) => response.json());
+    resultsMovies.results.forEach((element) => {
+        element.media_type = 'movie';
     });
-    let resultsShows = await fetch(`https://api.themoviedb.org/3/search/tv?query=${query}&page=1`, options).then((response) => response.json())
-    resultsShows.results.forEach(element => {
-        element.media_type = 'tv'
+    let resultsShows = await fetch(`https://api.themoviedb.org/3/search/tv?query=${query}&page=1`, options).then((response) => response.json());
+    resultsShows.results.forEach((element) => {
+        element.media_type = 'tv';
     });
-    let results = []
+    let results = [];
 
-    if(media_type == 'moviesAndShows'){
-        results = [...resultsMovies.results, ...resultsShows.results] 
-    } else if(media_type == 'movies'){
-        results = [...resultsMovies.results] 
-    } else if(media_type == 'shows'){
-        results = [...resultsShows.results] 
+    if (media_type == 'moviesAndShows') {
+        results = [...resultsMovies.results, ...resultsShows.results];
+    } else if (media_type == 'movies') {
+        results = [...resultsMovies.results];
+    } else if (media_type == 'shows') {
+        results = [...resultsShows.results];
     }
     results.sort((a, b) => Number(b.vote_count) - Number(a.vote_count));
 
-    
-    for(let i=0; i < results.length; i++){
+    for (let i = 0; i < results.length; i++) {
         let divMovies = document.createElement('div');
         divMovies.classList.add('movie');
         divMovies.addEventListener('click', openR);
         divMovies.dataset.id = `${results[i].id}`;
-        divMovies.dataset.type = results[i].media_type
+        divMovies.dataset.type = results[i].media_type;
         let movieImgCount = 0;
         let movieImg = await fetch(`https://api.themoviedb.org/3/${results[i].media_type}/${results[i].id}/images`, options).then((response) => response.json());
 
@@ -83,7 +82,7 @@ async function main() {
     }
 }
 
-main()
+main();
 
 function openR(event) {
     if (event.target.dataset.id != undefined) {

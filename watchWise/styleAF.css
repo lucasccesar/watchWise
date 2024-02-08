@@ -7,16 +7,16 @@
     text-decoration: none;
 }
 
-body{
+body {
     overflow-x: hidden;
     background-color: rgba(5, 21, 30, 1);
 }
 
-p{
+p {
     font-size: 1.6rem;
 }
 
-header{
+header {
     background-color: rgba(5, 21, 30, 1);
     padding: 0.5vw 1vw;
     display: flex;
@@ -25,36 +25,36 @@ header{
     height: 8rem;
 }
 
-.divSize{
+.divSize {
     width: 100%;
     position: relative;
     display: flex;
 }
 
-.divSize div:has(span){
+.divSize div:has(span) {
     display: flex;
     align-items: center;
     margin-right: 0.5rem;
 }
 
-.searchBtn{
+.searchBtn {
     color: white;
     font-weight: bolder !important;
     cursor: pointer;
 }
 
-#searchBarWrapper{
+#searchBarWrapper {
     transition: 500ms;
     width: 0;
     overflow: hidden;
 }
 
-#searchBar{
+#searchBar {
     display: flex;
     height: 100%;
 }
 
-#searchBar input{
+#searchBar input {
     padding: 0.5rem 0 0.5rem 1rem;
     min-width: 22.5rem;
     font-size: 1.5rem;
@@ -63,7 +63,7 @@ header{
     color: black;
 }
 
-#searchBar button{
+#searchBar button {
     background: none;
     border: none;
     margin: 0;
@@ -71,7 +71,7 @@ header{
     width: fit-content;
 }
 
-#searchFor{
+#searchFor {
     background-color: white;
     height: 100%;
     display: flex;
@@ -83,43 +83,43 @@ header{
     justify-content: center;
 }
 
-#searchBar select{
+#searchBar select {
     min-width: 12rem;
     font-size: 1.5rem;
     height: 100%;
     color: black;
 }
 
-#searchBar select option{
+#searchBar select option {
     font-size: 1.5rem;
     color: black;
 }
 
-#headerDiv{
+#headerDiv {
     display: flex;
     align-items: center;
     gap: 2vw;
 }
 
-header img{
+header img {
     height: 6rem;
     cursor: pointer;
 }
 
-.divSize:has(p){
+.divSize:has(p) {
     justify-content: end;
     display: flex;
 }
 
-header p, header a{
+header p,
+header a {
     color: white;
     font-weight: bolder !important;
-    font-size: 2.0rem;
+    font-size: 2rem;
     cursor: pointer;
     width: fit-content;
     text-decoration: none;
 }
-
 
 #bgImg {
     width: 100%;
@@ -131,22 +131,22 @@ header p, header a{
     background-position-y: 50%;
 }
 
-.fechadoImg{
+.fechadoImg {
     height: 75vh;
 }
 
-.abertoImg{
+.abertoImg {
     height: 100vh;
     transition: 500ms;
 }
 
-.iframeFechado{
+.iframeFechado {
     height: 0px;
     width: 0px;
     display: none;
 }
 
-.iframeAberto{
+.iframeAberto {
     visibility: visible;
     transition: 500ms;
     width: 1500px;
@@ -168,11 +168,11 @@ main {
     z-index: 100000;
 }
 
-.top200{
+.top200 {
     top: -200px;
 }
 
-.top{
+.top {
     top: 0px;
     transition: 500ms;
 }
@@ -219,7 +219,7 @@ main {
     background-color: #38a935;
 }
 
-#play:hover{
+#play:hover {
     cursor: pointer;
     background-color: #2c8529;
 }
@@ -264,7 +264,7 @@ main {
     font-size: 2rem;
 }
 
-#cast{
+#cast {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -279,7 +279,7 @@ main {
     border-radius: 100%;
 }
 
-.guest{
+.guest {
     width: 100px;
     height: 100px;
     background-size: cover;
@@ -304,42 +304,42 @@ main {
     justify-content: space-between;
 }
 
-.imagem{
+.imagem {
     width: 200px;
     height: 300px;
     cursor: pointer;
 }
 
-.movie-info{
+.movie-info {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
     height: 82px;
 }
 
-.movie-info h3{
+.movie-info h3 {
     font-size: 1.5rem;
 }
 
-.movie-info span{
+.movie-info span {
     background-color: #060607;
     border-radius: 10px;
     padding: 10px 15px;
 }
 
-.green{
+.green {
     color: green;
 }
 
-.orange{
+.orange {
     color: orange;
 }
 
-.red{
+.red {
     color: red;
 }
 
-.movie{
+.movie {
     font-family: 'Raleway';
     width: min-content;
     display: flex;
@@ -348,7 +348,7 @@ main {
 
 .gradient-border {
     --borderWidth: 3px;
-    background: #0F1315;
+    background: #0f1315;
     color: white;
     position: relative;
     border-radius: var(--borderWidth);

@@ -7,16 +7,16 @@
     text-decoration: none;
 }
 
-body{
+body {
     overflow-x: hidden;
     background-color: rgba(5, 21, 30, 1);
 }
 
-p{
+p {
     font-size: 1.6rem;
 }
 
-header{
+header {
     background-color: rgba(5, 21, 30, 1);
     padding: 0.5vw 1vw;
     display: flex;
@@ -25,36 +25,36 @@ header{
     height: 8rem;
 }
 
-.divSize{
+.divSize {
     width: 100%;
     position: relative;
     display: flex;
 }
 
-.divSize div:has(span){
+.divSize div:has(span) {
     display: flex;
     align-items: center;
     margin-right: 0.5rem;
 }
 
-.searchBtn{
+.searchBtn {
     color: white;
     font-weight: bolder !important;
     cursor: pointer;
 }
 
-#searchBarWrapper{
+#searchBarWrapper {
     transition: 500ms;
     width: 0;
     overflow: hidden;
 }
 
-#searchBar{
+#searchBar {
     display: flex;
     height: 100%;
 }
 
-#searchBar input{
+#searchBar input {
     padding: 0.5rem 0 0.5rem 1rem;
     min-width: 22.5rem;
     font-size: 1.5rem;
@@ -63,7 +63,7 @@ header{
     color: black;
 }
 
-#searchBar button{
+#searchBar button {
     background: none;
     border: none;
     margin: 0;
@@ -71,7 +71,7 @@ header{
     width: fit-content;
 }
 
-#searchFor{
+#searchFor {
     background-color: white;
     height: 100%;
     display: flex;
@@ -83,38 +83,39 @@ header{
     justify-content: center;
 }
 
-#searchBar select{
+#searchBar select {
     min-width: 12rem;
     font-size: 1.5rem;
     height: 100%;
     color: black;
 }
 
-#searchBar select option{
+#searchBar select option {
     font-size: 1.5rem;
     color: black;
 }
 
-#headerDiv{
+#headerDiv {
     display: flex;
     align-items: center;
     gap: 2vw;
 }
 
-header img{
+header img {
     height: 6rem;
     cursor: pointer;
 }
 
-.divSize:has(p){
+.divSize:has(p) {
     justify-content: end;
     display: flex;
 }
 
-header p, header a{
+header p,
+header a {
     color: white;
     font-weight: bolder !important;
-    font-size: 2.0rem;
+    font-size: 2rem;
     cursor: pointer;
     width: fit-content;
     text-decoration: none;
@@ -297,16 +298,16 @@ button {
     padding: 0;
 }
 
-#anterior{
+#anterior {
     visibility: hidden;
 }
 
-#anterior span{
+#anterior span {
     rotate: 180deg;
     width: 2vw;
 }
 
-#episodesWrapper{
+#episodesWrapper {
     width: 77vw;
     overflow: hidden;
 }
@@ -399,7 +400,7 @@ button {
     border-radius: 100%;
 }
 
-.character{
+.character {
     color: gray;
     font-size: 1.4rem;
 }

@@ -98,7 +98,7 @@ async function main() {
         for (let j = 0; j < 4; j++) {
             let divMovies = document.createElement('div');
             divMovies.classList.add('movie');
-            divMovies.dataset.id = `${trendingResults[j + i * 4].id}`
+            divMovies.dataset.id = `${trendingResults[j + i * 4].id}`;
             let movieImgCount = 0;
             let movieImg = await fetch(`https://api.themoviedb.org/3/tv/${trendingResults[j + i * 4].id}/images`, options).then((response) => response.json());
             for (let i = 0; i < movieImg.backdrops.length; i++) {
@@ -173,26 +173,26 @@ async function main() {
         btn.addEventListener('click', previousAction);
     });
 
-    var moviesDiv = document.querySelectorAll('.movie') 
-    console.log(moviesDiv)
-    moviesDiv.forEach(movie => {
-        movie.addEventListener('click', openR)
+    var moviesDiv = document.querySelectorAll('.movie');
+    console.log(moviesDiv);
+    moviesDiv.forEach((movie) => {
+        movie.addEventListener('click', openR);
     });
 
-    var genreAbsolute = document.querySelectorAll(".genreAbsolute")
-    genreAbsolute.forEach(element => {
-        element.addEventListener("mouseenter", hoverGenre)
-        element.addEventListener("mouseleave", leaveGenre)
-        element.addEventListener("click", openGenre)
+    var genreAbsolute = document.querySelectorAll('.genreAbsolute');
+    genreAbsolute.forEach((element) => {
+        element.addEventListener('mouseenter', hoverGenre);
+        element.addEventListener('mouseleave', leaveGenre);
+        element.addEventListener('click', openGenre);
     });
 
     setInterval(constant, 1);
 }
 
-function openGenre(event){
+function openGenre(event) {
     let genreId = event.target.dataset.genreId;
     let genreName = event.target.dataset.genreName;
-    site = 'movieGenre.html?id=' + genreId +"&type=tv" + "&genre=" + genreName;
+    site = 'movieGenre.html?id=' + genreId + '&type=tv' + '&genre=' + genreName;
     window.location.href = site;
 }
 
@@ -208,8 +208,8 @@ async function showMovies(genre, index, element, genreId) {
         for (let j = 0; j < 4; j++) {
             let divMovies = document.createElement('div');
             divMovies.classList.add('movie');
-            divMovies.addEventListener('click', openR)
-            divMovies.dataset.id = `${results[j + i * 4].id}`
+            divMovies.addEventListener('click', openR);
+            divMovies.dataset.id = `${results[j + i * 4].id}`;
             let movieImgCount = 0;
             let movieImg = await fetch(`https://api.themoviedb.org/3/tv/${results[j + i * 4].id}/images`, options).then((response) => response.json());
             for (let i = 0; i < movieImg.backdrops.length; i++) {
@@ -235,22 +235,22 @@ async function showMovies(genre, index, element, genreId) {
     }
 }
 
-function hoverGenre(event){
-    event.target.parentElement.lastElementChild.style.width = "100%"
+function hoverGenre(event) {
+    event.target.parentElement.lastElementChild.style.width = '100%';
 }
 
-function leaveGenre(event){
-    event.target.parentElement.lastElementChild.style.width = "0px"
+function leaveGenre(event) {
+    event.target.parentElement.lastElementChild.style.width = '0px';
 }
 
 function nextAction(event) {
     if (event.target.innerHTML != ' arrow_forward_ios ') {
         let divInfo = event.target.parentElement.children[1];
         var partitions = document.querySelectorAll(`.${divInfo.children[0].classList[0]}`);
-        console.log(divInfo.dataset.currentCount + 1 == partitions.length - 1, divInfo.dataset.currentCount, partitions.length)
+        console.log(divInfo.dataset.currentCount + 1 == partitions.length - 1, divInfo.dataset.currentCount, partitions.length);
         if (divInfo.dataset.currentCount < partitions.length - 1) {
             divInfo.dataset.currentCount++;
-            divInfo.style.transform = `translateX(${(-1 * parseInt(divInfo.dataset.currentCount)) * 156}rem)`;
+            divInfo.style.transform = `translateX(${-1 * parseInt(divInfo.dataset.currentCount) * 156}rem)`;
             if (divInfo.dataset.currentCount > 0) {
                 event.target.parentElement.children[0].classList.replace('hidden', 'visible');
             }
@@ -263,10 +263,10 @@ function nextAction(event) {
     } else {
         let divInfo = event.target.parentElement.parentElement.children[1];
         var partitions = document.querySelectorAll(`.${divInfo.children[0].classList[0]}`);
-        console.log(divInfo.dataset.currentCount)
+        console.log(divInfo.dataset.currentCount);
         if (divInfo.dataset.currentCount < partitions.length - 1) {
             divInfo.dataset.currentCount++;
-            divInfo.style.transform = `translateX(${(-1 * parseInt(divInfo.dataset.currentCount)) * 156}rem)`;
+            divInfo.style.transform = `translateX(${-1 * parseInt(divInfo.dataset.currentCount) * 156}rem)`;
             if (divInfo.dataset.currentCount > 0) {
                 event.target.parentElement.parentElement.children[0].classList.replace('hidden', 'visible');
             }
@@ -285,7 +285,7 @@ function previousAction(event) {
         var partitions = document.querySelectorAll(`.${divInfo.children[0].classList[0]}`);
         if (divInfo.dataset.currentCount > 0) {
             divInfo.dataset.currentCount--;
-            divInfo.style.transform = `translateX(${(-1 * parseInt(divInfo.dataset.currentCount)) * 156}rem)`;
+            divInfo.style.transform = `translateX(${-1 * parseInt(divInfo.dataset.currentCount) * 156}rem)`;
             if (divInfo.dataset.currentCount < 4) {
                 event.target.parentElement.children[2].classList.replace('hidden', 'visible');
             }
@@ -299,7 +299,7 @@ function previousAction(event) {
         let divInfo = event.target.parentElement.parentElement.children[1];
         var partitions = document.querySelectorAll(`.${divInfo.children[0].classList[0]}`);
         divInfo.dataset.currentCount--;
-        divInfo.style.transform = `translateX(${(-1 * parseInt(divInfo.dataset.currentCount)) * 156}rem)`;
+        divInfo.style.transform = `translateX(${-1 * parseInt(divInfo.dataset.currentCount) * 156}rem)`;
         if (divInfo.dataset.currentCount < 4) {
             event.target.parentElement.parentElement.children[2].classList.replace('hidden', 'visible');
         }
@@ -326,12 +326,12 @@ function hoverLeave(event) {
 }
 
 function openR(event) {
-    console.log(event.target)
-    if(event.target.dataset.id != undefined){
+    console.log(event.target);
+    if (event.target.dataset.id != undefined) {
         movieId = event.target.dataset.id;
         site = 'assistirSeries.html?id=' + movieId;
         window.location.href = site;
-    } else{
+    } else {
         movieId = event.target.parentElement.dataset.id;
         site = 'assistirSeries.html?id=' + movieId;
         window.location.href = site;
@@ -364,7 +364,7 @@ async function mudar(event) {
         for (let i = 0; i < 4; i++) {
             if (event.target == btns[i] || event.target.parentElement == btns[i]) {
                 movies.classList.add('delay');
-                movies.style.transform = `translateX(${(-1 * i) * 190.3}rem)`;
+                movies.style.transform = `translateX(${-1 * i * 190.3}rem)`;
                 currentSuggestion = i;
             }
             if (event.target == btns[i]) {
