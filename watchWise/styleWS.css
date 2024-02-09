@@ -1,5 +1,6 @@
 * {
     margin: 0;
+    padding: 0;
     font-family: 'Roboto Condensed', sans-serif;
     box-sizing: border-box;
     font-size: 62.5%;
@@ -12,17 +13,14 @@ body {
     background-color: rgba(5, 21, 30, 1);
 }
 
-p {
-    font-size: 1.6rem;
-}
-
 header {
     background-color: rgba(5, 21, 30, 1);
-    padding: 0.5vw 1vw;
+    padding: 1vw 3vw;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 8rem;
+    height: calc(9vh + 2vw);
+    position: relative;
 }
 
 .divSize {
@@ -39,36 +37,36 @@ header {
 
 .searchBtn {
     color: white;
+    font-size: calc(1.9rem + 1vw) !important;
     font-weight: bolder !important;
     cursor: pointer;
 }
 
 #searchBarWrapper {
+    display: none;
     transition: 500ms;
     width: 0;
     overflow: hidden;
 }
 
-#searchBar {
+.searchBar {
     display: flex;
     height: 100%;
 }
 
-#searchBar input {
+.searchBar input {
     padding: 0.5rem 0 0.5rem 1rem;
-    min-width: 22.5rem;
-    font-size: 1.5rem;
+    min-width: 45vw;
+    font-size: calc(0.5rem + 2vw);
     border: none;
     outline: none;
-    color: black;
 }
 
-#searchBar button {
+.searchBar button {
     background: none;
     border: none;
     margin: 0;
     padding: 0;
-    width: fit-content;
 }
 
 #searchFor {
@@ -76,33 +74,32 @@ header {
     height: 100%;
     display: flex;
     align-items: center;
-    width: 2.5rem;
+    width: 7vw;
     color: gray;
     cursor: pointer;
-    font-size: 2rem;
+    font-size: calc(1.3rem + 2vw);
     justify-content: center;
 }
 
-#searchBar select {
-    min-width: 12rem;
-    font-size: 1.5rem;
-    height: 100%;
+.searchBar select {
+    min-width: 29vw;
     color: black;
+    font-size: calc(0.5rem + 2vw);
 }
 
-#searchBar select option {
-    font-size: 1.5rem;
+.searchBar select option {
+    font-size: calc(0.5rem + 2vw);
     color: black;
 }
 
 #headerDiv {
     display: flex;
     align-items: center;
-    gap: 2vw;
+    gap: calc(2vh + 1vw);
 }
 
 header img {
-    height: 6rem;
+    height: calc(5rem + 1vw);
     cursor: pointer;
 }
 
@@ -115,19 +112,32 @@ header p,
 header a {
     color: white;
     font-weight: bolder !important;
-    font-size: 2rem;
+    font-size: calc(1rem + 1vw);
     cursor: pointer;
     width: fit-content;
     text-decoration: none;
 }
 
+#searchBarWrapperMobile {
+    transition: 500ms;
+    width: 0;
+    overflow: hidden;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+    background-color: white;
+}
+
 #bgImg {
-    width: 100%;
+    width: 100vw;
+    height: 72vw;
     background-repeat: no-repeat;
     background-size: cover;
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: flex-end;
+    background-position-x: 50%;
     background-position-y: 50%;
 }
 
@@ -158,18 +168,18 @@ header a {
 }
 
 main {
-    width: 81vw;
-    height: max-content;
+    width: 100%;
+    height: 0;
     margin: auto;
     position: relative;
     display: flex;
     flex-direction: column;
-    gap: 10px;
     z-index: 100000;
+    gap: 1vw;
 }
 
 .top200 {
-    top: -200px;
+    top: calc(-14vw - 10vh);
 }
 
 .top {
@@ -179,14 +189,18 @@ main {
 
 #diretores {
     display: flex;
-    gap: 20px;
+    gap: 3vw;
     color: #fff;
     text-shadow: 1px 1px 0 #000, -1px 1px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000;
 }
 
+#diretores p {
+    font-size: calc(0.3rem + 2vw);
+}
+
 #nome {
     font-weight: bold;
-    font-size: 4rem;
+    font-size: calc(2.3rem + 2vw);
     color: #fff;
     text-shadow: 1px 1px 0 #000, -1px 1px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000;
 }
@@ -199,7 +213,7 @@ main {
 .genero {
     border: white 1px solid;
     border-radius: 5px;
-    font-size: 1.2rem;
+    font-size: calc(0.1rem + 2vw);
     background-color: rgba(255, 255, 255, 0.2);
     padding: 5px;
     font-weight: bold;
@@ -209,17 +223,20 @@ main {
 #telas {
     margin-top: 10px;
     display: flex;
-    gap: 10px;
+    gap: 4px;
+    /* width: 90vw; */
+    margin-top: 2vw !important;
 }
 
 #play {
     width: 100%;
-    border-radius: 20px;
+    border-radius: 1vw;
     border: none;
     background-color: #38a935;
+    /* height: 30px; */
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
 }
 
 #play:hover {
@@ -232,14 +249,14 @@ main {
 }
 
 #playArrow {
-    font-size: 6rem;
+    font-size: calc(1.3rem + 2vw);
 }
 
 .tela {
     background-color: rgba(255, 255, 255, 0.1);
     width: 100%;
-    height: 130px;
-    border-radius: 20px;
+    height: calc(8vw + 2vh);
+    border-radius: 1vw;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -249,12 +266,14 @@ main {
 
 .info {
     font-weight: bold;
-    font-size: 3rem;
+    font-size: calc(0.3rem + 2vw);
     text-align: center;
 }
 
 .titulo {
     color: darkgray;
+    font-size: calc(0.3rem + 1vw);
+    text-align: center;
 }
 
 .hidden {
@@ -274,7 +293,7 @@ main {
     border: none;
     text-transform: uppercase;
     font-weight: bold;
-    font-size: 2rem;
+    font-size: calc(0.9rem + 2vw);
     cursor: pointer;
 }
 
@@ -283,14 +302,15 @@ main {
     border: none;
     text-transform: uppercase;
     font-weight: bold;
-    font-size: 2rem;
+    font-size: calc(1.3rem + 2vw);
 }
 
 #btnEp {
     display: flex;
 }
 
-button {
+#btnEp button {
+    display: none;
     width: 2vw;
     background-color: rgba(255, 255, 255, 0);
     border: none;
@@ -308,15 +328,23 @@ button {
 }
 
 #episodesWrapper {
-    width: 77vw;
-    overflow: hidden;
+    padding-left: 5%;
+    overflow-x: scroll;
+    padding-bottom: 3vw;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+#episodesWrapper::-webkit-scrollbar {
+    display: none;
 }
 
 #episodes {
     display: flex;
     flex-flow: row nowrap;
-    gap: 1vw;
+    gap: 2vw;
     transition: 700ms;
+    width: fit-content;
 }
 
 .episodesDiv {
@@ -343,8 +371,10 @@ button {
 
 .episodeImg {
     aspect-ratio: 1556 / 875;
-    width: 18.5vw;
-    height: 10.5vw;
+    min-width: 43.5vw;
+    min-height: 24.5vw;
+    width: 43.5vw;
+    height: 24.5vw;
     display: flex;
     flex-direction: row;
     background-size: cover;
@@ -353,15 +383,16 @@ button {
 }
 
 .episodeInfo {
-    height: max-content;
     width: 100%;
+    height: 100%;
+    min-height: 8vw;
     box-sizing: border-box;
     background-color: #040f16;
     z-index: 2;
     display: flex;
     align-items: center;
     padding: 10px;
-    gap: 10px;
+    gap: 3vw;
     border-radius: 0 0 10px 10px;
 }
 
@@ -371,8 +402,12 @@ button {
     width: 100%;
 }
 
+.episodeInfoClass p {
+    font-size: calc(0.3rem + 2vw);
+}
+
 #playEp {
-    font-size: 4rem;
+    font-size: calc(1.3rem + 2vw);
 }
 
 .epNum {
@@ -382,18 +417,42 @@ button {
 .description {
     color: #404d53;
     font-weight: bold;
-    font-size: 2rem;
+    font-size: calc(0.9rem + 2vw);
+}
+
+#description {
+    font-size: calc(0.3rem + 2vw);
+}
+
+#diretores,
+#nome,
+#generos,
+#telas,
+.description,
+#description,
+#seasons {
+    margin: 0% 5%;
 }
 
 #cast {
     display: flex;
-    flex-wrap: wrap;
     justify-content: space-between;
+    overflow-x: scroll;
+    padding-bottom: 3vw;
+    gap: 3vw;
+    padding-left: 5%;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
 
+#cast::-webkit-scrollbar {
+    display: none;
+}
+
+
 .face {
-    width: 100px;
-    height: 100px;
+    width: 25vw;
+    height: 25vw;
     background-size: cover;
     background-repeat: no-repeat;
     background-position-y: -10px;
@@ -402,7 +461,7 @@ button {
 
 .character {
     color: gray;
-    font-size: 1.4rem;
+    font-size: calc(0.7rem + 2vw);
 }
 
 .guest {
@@ -423,16 +482,29 @@ button {
     text-align: center;
 }
 
+.actor p {
+    font-size: calc(0.3rem + 2vw);
+}
+
 #similarMovies {
     display: flex;
-    flex-wrap: wrap;
     gap: 15px;
     justify-content: space-between;
+    overflow-x: scroll;
+    padding: 1vw 1vw 4vw;
+    padding-left: 5%;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    margin-bottom: 10vw;
+}
+
+#similarMovies::-webkit-scrollbar {
+    display: none;
 }
 
 .imagem {
-    width: 200px;
-    height: 300px;
+    width: 40vw;
+    height: 60vw;
     cursor: pointer;
 }
 
@@ -444,7 +516,7 @@ button {
 }
 
 .movie-info h3 {
-    font-size: 1.5rem;
+    font-size: calc(0.8rem + 2vw);
 }
 
 .movie-info span {
@@ -470,6 +542,12 @@ button {
     width: min-content;
     display: flex;
     flex-direction: column;
+}
+
+div.actor:last-child,
+div.episode:last-child,
+div.movie:last-child {
+    margin-right: 5vw;
 }
 
 .gradient-border {

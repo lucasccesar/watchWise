@@ -407,11 +407,11 @@ function openR(event) {
     console.log(event.target);
     if (event.target.dataset.id != undefined) {
         movieId = event.target.dataset.id;
-        site = 'assistirSeries.html?id=' + movieId;
+        site = 'watchShows.html?id=' + movieId;
         window.location.href = site;
     } else {
         movieId = event.target.parentElement.dataset.id;
-        site = 'assistirSeries.html?id=' + movieId;
+        site = 'watchShows.html?id=' + movieId;
         window.location.href = site;
     }
 }

@@ -523,17 +523,17 @@ function openR(event) {
     if (event.target.dataset.id != undefined) {
         movieId = event.target.dataset.id;
         if (event.target.dataset.type == 'movie') {
-            site = 'watchWise/assistirFilmes.html?id=' + movieId;
+            site = 'watchWise/watchMovies.html?id=' + movieId;
         } else {
-            site = 'watchWise/assistirSeries.html?id=' + movieId;
+            site = 'watchWise/watchShows.html?id=' + movieId;
         }
         window.location.href = site;
     } else {
         movieId = event.target.parentElement.dataset.id;
         if (event.target.parentElement.dataset.type == 'movie') {
-            site = 'watchWise/assistirFilmes.html?id=' + movieId;
+            site = 'watchWise/watchMovies.html?id=' + movieId;
         } else {
-            site = 'watchWise/assistirSeries.html?id=' + movieId;
+            site = 'watchWise/watchShows.html?id=' + movieId;
         }
         window.location.href = site;
     }

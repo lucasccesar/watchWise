@@ -97,11 +97,11 @@ function back() {
 function openR(event) {
     if (event.target.dataset.id != undefined) {
         movieId = event.target.dataset.id;
-        site = `assistir${type == 'movie' ? 'Filmes' : 'Series'}.html?id=` + movieId;
+        site = `watch${type == 'movie' ? 'Movies' : 'Shows'}.html?id=` + movieId;
         window.location.href = site;
     } else {
         movieId = event.target.parentElement.dataset.id;
-        site = `assistir${type == 'movie' ? 'Filmes' : 'Series'}.html?id=` + movieId;
+        site = `watch${type == 'movie' ? 'Movies' : 'Shows'}.html?id=` + movieId;
         window.location.href = site;
     }
 }

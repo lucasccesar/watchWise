@@ -37,12 +37,22 @@ let isSearchExpanded = false;
 let search = document.querySelector('#searchBar');
 
 expandSearch.addEventListener('click', () => {
-    if (isSearchExpanded) {
-        document.getElementById('searchBarWrapper').style.width = '0rem';
-        isSearchExpanded = false;
+    if (window.getComputedStyle(document.getElementById('searchBarWrapper')).getPropertyValue('display') != 'none') {
+        if (isSearchExpanded) {
+            document.getElementById('searchBarWrapper').style.width = '0rem';
+            isSearchExpanded = false;
+        } else {
+            document.getElementById('searchBarWrapper').style.width = '37rem';
+            isSearchExpanded = true;
+        }
     } else {
-        document.getElementById('searchBarWrapper').style.width = '37rem';
-        isSearchExpanded = true;
+        if (isSearchExpanded) {
+            document.getElementById('searchBarWrapperMobile').style.width = '0vw';
+            isSearchExpanded = false;
+        } else {
+            document.getElementById('searchBarWrapperMobile').style.width = '81vw';
+            isSearchExpanded = true;
+        }
     }
 });
 
@@ -159,6 +169,7 @@ async function main() {
         imgId.style.backgroundImage = `url("${imgUrl + poster_path}")`;
         imgId.style.backgroundSize = `cover`;
         imgId.addEventListener('click', abrirSimilar);
+        console.log(poster_path)
     });
 }
 
@@ -183,6 +194,6 @@ function abrir() {
 
 function abrirSimilar(event) {
     var similarMovieId = event.target.offsetParent.id;
-    site = 'assistirFilmes.html?id=' + similarMovieId;
+    site = 'watchMovies.html?id=' + similarMovieId;
     window.location.href = site;
 }

@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="./styleAS.css" />
+        <link rel="stylesheet" href="./styleWS.css" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet" />
@@ -37,6 +37,17 @@
             </div>
             <div class="divSize">
                 <p>Sign In</p>
+            </div>
+            <div id="searchBarWrapperMobile">
+                <form method="get" action="watchWise/search.html" class="searchBar">
+                    <input type="text" placeholder="What are you looking for?" name="query" autocomplete="off"/>    
+                    <button type="submit"><span class="material-symbols-rounded" id="searchFor">search</span></button>
+                    <select name="media_type">
+                        <option value="moviesAndShows">Movies & Shows</option>
+                        <option value="movies">Movies</option>
+                        <option value="shows" selected>Shows</option>
+                    </select>
+                </form>
             </div>
         </header>
         <div id="bgImg" class="fechadoImg">
@@ -109,5 +120,5 @@
             </main>
         </div>
     </body>
-    <script src="./scriptAS.js"></script>
+    <script src="./scriptWS.js"></script>
 </html>

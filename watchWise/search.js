@@ -98,17 +98,17 @@ function openR(event) {
     if (event.target.dataset.id != undefined) {
         movieId = event.target.dataset.id;
         if (event.target.dataset.type == 'movie') {
-            site = 'assistirFilmes.html?id=' + movieId;
+            site = 'watchMovies.html?id=' + movieId;
         } else {
-            site = 'assistirSeries.html?id=' + movieId;
+            site = 'watchShows.html?id=' + movieId;
         }
         window.location.href = site;
     } else {
         movieId = event.target.parentElement.dataset.id;
         if (event.target.parentElement.dataset.type == 'movie') {
-            site = 'assistirFilmes.html?id=' + movieId;
+            site = 'watchMovies.html?id=' + movieId;
         } else {
-            site = 'assistirSeries.html?id=' + movieId;
+            site = 'watchShows.html?id=' + movieId;
         }
         window.location.href = site;
     }

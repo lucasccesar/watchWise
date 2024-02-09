@@ -409,11 +409,11 @@ function openR(event) {
     console.log(event.target);
     if (event.target.dataset.id != undefined) {
         movieId = event.target.dataset.id;
-        site = 'assistirFilmes.html?id=' + movieId;
+        site = 'watchMovies.html?id=' + movieId;
         window.location.href = site;
     } else {
         movieId = event.target.parentElement.dataset.id;
-        site = 'assistirFilmes.html?id=' + movieId;
+        site = 'watchMovies.html?id=' + movieId;
         window.location.href = site;
     }
 }
