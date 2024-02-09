@@ -115,11 +115,17 @@ async function main() {
         filme.style.backgroundImage = `-webkit-linear-gradient(bottom, rgb(5, 21, 30) 0%, rgba(0, 0, 0, 0) 30%) ,url(${IMG_URL + movie.backdrop_path})`;
         filme.innerHTML = `
         <div class='info'>
-        <div class='infoInner'>
-        <p class="title">${movie.original_title}</p>
-        <p class="description">${movie.overview}</p>
-        <button class="btnWatch" data-id="${movie.id}" data-type="${movie.media_type}"><span class="material-symbols-rounded" id="play_arrow">play_arrow</span>Watch Movie</button>
+            <div class='infoInner'>
+                <p class="title">${movie.original_title}</p>
+                <p class="description">${movie.overview}</p>
+                <button class="btnWatch" data-id="${movie.id}" data-type="${movie.media_type}"><span class="material-symbols-rounded" id="play_arrow">play_arrow</span>Watch Movie</button>
+            </div>
         </div>
+        <div class='infoMobile'>
+            <div class='infoInner'>
+                <p class="title">${movie.original_title}</p>
+                <button class="btnWatch" data-id="${movie.id}" data-type="${movie.media_type}"><span class="material-symbols-rounded" id="play_arrow">play_arrow</span></button>
+            </div>
         </div>
         `;
 
@@ -133,11 +139,17 @@ async function main() {
             filme.style.backgroundImage = `-webkit-linear-gradient(bottom, rgb(5, 21, 30) 0%, rgba(0, 0, 0, 0) 30%) ,url(${IMG_URL + discoverOrder[0].backdrop_path})`;
             filme.innerHTML = `
             <div class='info'>
-            <div class='infoInner'>
-            <p class="title">${discoverOrder[0].original_title}</p>
-            <p class="description">${discoverOrder[0].overview}</p>
-            <button class="btnWatch" data-id="${movie.id}"><span class="material-symbols-rounded" id="play_arrow">play_arrow</span>Watch Movie</button>
+                <div class='infoInner'>
+                    <p class="title">${discoverOrder[0].original_title}</p>
+                    <p class="description">${discoverOrder[0].overview}</p>
+                    <button class="btnWatch" data-id="${movie.id}"><span class="material-symbols-rounded" id="play_arrow">play_arrow</span>Watch Movie</button>
+                </div>
             </div>
+            <div class='infoMobile'>
+                <div class='infoInner'>
+                    <p class="title">${discoverOrder[0].original_title}</p>
+                    <button class="btnWatch" data-id="${movie.id}"><span class="material-symbols-rounded" id="play_arrow">play_arrow</span></button>
+                </div>
             </div>
             `;
 
@@ -224,7 +236,7 @@ async function main() {
             <div class="genreDiv">
                 <div class="genreAbsolute" data-genre-id="${genresMoviesTv[key].id}" data-genre-name="${genresMoviesTv[key].name}" data-genre-type='tv'></div>
                     <div class="centerText">
-                        <p>${genresMoviesTv[key].name} Movies</p>
+                        <p>${genresMoviesTv[key].name} Shows</p>
                         <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24"><path d="M6.75 21.5q-.525-.525-.525-1.288 0-.762.525-1.287L13.675 12l-6.95-6.95q-.525-.525-.537-1.275-.013-.75.537-1.3.525-.525 1.287-.525.763 0 1.288.525l8.425 8.425q.225.225.337.512.113.288.113.588t-.113.587q-.112.288-.337.513L9.3 21.525q-.525.525-1.262.525-.738 0-1.288-.55Z" /></svg>  
                     </div>
                     <div class="genreBar"></div>

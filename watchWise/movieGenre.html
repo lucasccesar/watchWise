@@ -28,20 +28,31 @@
                 </div>
             </div>
             <div id="headerDiv">
-                <a href="watchWise/movies.html">Movies</a>
+                <a href="movies.html">Movies</a>
                 <img src="https://cdn-icons-png.flaticon.com/256/183/183341.png" alt="" onclick="window.location.href = '/watchWise.html'" />
-                <a href="watchWise/shows.html">Shows</a>
+                <a href="shows.html">Shows</a>
             </div>
             <div class="divSize">
                 <p>Sign In</p>
+            </div>
+            <div id="searchBarWrapperMobile">
+                <form method="get" action="search.html" class="searchBar">
+                    <input type="text" placeholder="What are you looking for?" name="query" autocomplete="off"/>    
+                    <button type="submit"><span class="material-symbols-rounded" id="searchFor">search</span></button>
+                    <select name="media_type">
+                        <option value="moviesAndShows">Movies & Shows</option>
+                        <option value="movies">Movies</option>
+                        <option value="shows">Shows</option>
+                    </select>
+                </form>
             </div>
         </header>
         <div id="genre">
             <div id="lowerHeader">
                 <div>
-                    <p id="back"><span class="material-symbols-rounded" style="font-weight: bold"> arrow_back_ios </span>Voltar</p>
+                    <p id="back"><span class="material-symbols-rounded" style="font-weight: bold; font-size: calc(0.5rem + 2vw); display: flex; align-items: center; justify-content: center;"> arrow_back_ios </span>Voltar</p>
                 </div>
-                <p id="genreName" style="font-size: 40px; font-weight: bold; text-transform: uppercase">Genre</p>
+                <p id="genreName" style="font-size: calc(2rem + 2vw); font-weight: bold; text-transform: uppercase">Genre</p>
                 <div class="hidden">
                     <p id="back"><span class="material-symbols-rounded" style="font-weight: bold"> arrow_back_ios </span>Voltar</p>
                 </div>

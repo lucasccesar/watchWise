@@ -37,8 +37,19 @@
             <div class="divSize">
                 <p>Sign In</p>
             </div>
+            <div id="searchBarWrapperMobile">
+                <form method="get" action="search.html" class="searchBar">
+                    <input type="text" placeholder="What are you looking for?" name="query" autocomplete="off"/>    
+                    <button type="submit"><span class="material-symbols-rounded" id="searchFor">search</span></button>
+                    <select name="media_type">
+                        <option value="moviesAndShows">Movies & Shows</option>
+                        <option value="movies">Movies</option>
+                        <option value="shows">Shows</option>
+                    </select>
+                </form>
+            </div>
         </header>
-        <div id="lower">
+        <div id="lower" style="margin-top: 6vh;">
             <p id="resultsTitle">Results For:</p>
             <div id="searchResults"></div>
         </div>

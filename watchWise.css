@@ -20,7 +20,7 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 10vh;
+    height: calc(9vh + 2vw);
     position: relative;
 }
 
@@ -38,7 +38,7 @@ header {
 
 .searchBtn {
     color: white;
-    font-size: 2.2rem !important;
+    font-size: calc(1.9rem + 1vw) !important;
     font-weight: bolder !important;
     cursor: pointer;
 }
@@ -94,11 +94,11 @@ header {
 #headerDiv {
     display: flex;
     align-items: center;
-    gap: 4vw;
+    gap: calc(2vh + 1vw);
 }
 
 header img {
-    height: 5rem;
+    height: calc(5rem + 1vw);
     cursor: pointer;
 }
 
@@ -111,7 +111,7 @@ header p,
 header a {
     color: white;
     font-weight: bolder !important;
-    font-size: 1.5rem;
+    font-size: calc(1rem + 1vw);
     cursor: pointer;
     width: fit-content;
     text-decoration: none;
@@ -208,25 +208,24 @@ header a {
 
 .info {
     width: 80vw;
+    display: none;
 }
 
 .infoInner {
-    display: none;
-
     width: fit-content;
-    margin-bottom: 2%;
-    /* display: flex; */
-    flex-direction: column;
-    gap: 25px;
+    margin-bottom: 5vw;
+    display: flex;
+    gap: 3vw;
     background-color: rgba(0, 0, 0, 0.2);
     backdrop-filter: blur(5px);
-    padding: 20px;
-    border-radius: 20px;
+    padding: 3vw;
+    border-radius: 2vw;
+    align-items: center;
 }
 
 .btnWatch {
     border: none;
-    padding: 16px 60px;
+    padding: 5px 5px;
     font-weight: bold;
     font-size: 20px;
     border-radius: 100px;
@@ -250,11 +249,16 @@ header a {
 .title {
     color: white;
     font-weight: bold;
-    font-size: 60px;
+    font-size: calc(0.9rem + 2vw);
+    max-width: 60vw;
 }
 
 #play_arrow {
-    font-size: 30px;
+    font-size: calc(0.9rem + 2vw);
+}
+
+.infoMobile {
+    width: fit-content;
 }
 
 .filme {
@@ -483,7 +487,7 @@ header a {
 }
 
 #resultsTitle {
-    font-size: 3rem;
+    font-size: calc(1.3rem + 2vw);
     text-transform: capitalize;
 }
 

@@ -12,11 +12,12 @@ body {
 
 header {
     background-color: rgba(5, 21, 30, 1);
-    padding: 0.5vw 1vw;
+    padding: 1vw 3vw;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 8rem;
+    height: calc(9vh + 2vw);
+    position: relative;
     border-bottom: 1px solid rgb(15, 29, 37);
 }
 
@@ -34,30 +35,32 @@ header {
 
 .searchBtn {
     color: white;
+    font-size: calc(1.9rem + 1vw) !important;
     font-weight: bolder !important;
     cursor: pointer;
 }
 
 #searchBarWrapper {
+    display: none;
     transition: 500ms;
     width: 0;
     overflow: hidden;
 }
 
-#searchBar {
+.searchBar {
     display: flex;
     height: 100%;
 }
 
-#searchBar input {
+.searchBar input {
     padding: 0.5rem 0 0.5rem 1rem;
-    min-width: 22.5rem;
-    font-size: 1.5rem;
+    min-width: 45vw;
+    font-size: calc(0.5rem + 2vw);
     border: none;
     outline: none;
 }
 
-#searchBar button {
+.searchBar button {
     background: none;
     border: none;
     margin: 0;
@@ -69,31 +72,30 @@ header {
     height: 100%;
     display: flex;
     align-items: center;
-    width: 2.5rem;
+    width: 7vw;
     color: gray;
     cursor: pointer;
     font-size: 2rem;
     justify-content: center;
 }
 
-#searchBar select {
-    min-width: 12rem;
-    font-size: 1.5rem;
-    height: 100%;
+.searchBar select {
+    min-width: 29vw;
+    font-size: calc(0.5rem + 2vw);
 }
 
-#searchBar select option {
-    font-size: 1.5rem;
+.searchBar select option {
+    font-size: calc(0.5rem + 2vw);
 }
 
 #headerDiv {
     display: flex;
     align-items: center;
-    gap: 2vw;
+    gap: calc(2vh + 1vw);
 }
 
 header img {
-    height: 6rem;
+    height: calc(5rem + 1vw);
     cursor: pointer;
 }
 
@@ -106,10 +108,20 @@ header p,
 header a {
     color: white;
     font-weight: bolder !important;
-    font-size: 2rem;
+    font-size: calc(1rem + 1vw);
     cursor: pointer;
     width: fit-content;
     text-decoration: none;
+}
+
+#searchBarWrapperMobile {
+    transition: 500ms;
+    width: 0;
+    overflow: hidden;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
 }
 
 #lowerHeader {
@@ -126,10 +138,10 @@ header a {
 
 #movies {
     display: flex;
-    width: 80vw;
     flex-wrap: wrap;
     justify-content: space-between;
     margin: auto;
+    width: 90vw;
 }
 
 .movie {
@@ -140,10 +152,10 @@ header a {
 
 .movieBackdrop {
     aspect-ratio: 1485 / 835;
-    width: 365px;
+    width: 42.5vw;
     background-size: cover;
     background-repeat: no-repeat;
-    border-radius: 10px;
+    border-radius: 2vw;
 }
 
 .movieInfo {
@@ -159,7 +171,11 @@ header a {
 .title {
     color: white;
     font-weight: bold;
-    font-size: 2.2rem;
+    font-size: calc(0.5rem + 2vw);
+}
+
+.movieInfo svg {
+    font-size: calc(0.5rem + 2vw);
 }
 
 #genre {
@@ -172,7 +188,7 @@ header a {
 #back {
     display: flex;
     align-items: center;
-    font-size: 20px;
+    font-size: calc(0.5rem + 2vw);
     font-weight: bold;
     cursor: pointer;
 }
