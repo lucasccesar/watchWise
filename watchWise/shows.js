@@ -117,39 +117,34 @@ async function main() {
         }
     });
 
-    for (let i = 0; i < trendingResults.length / 4; i++) {
-        let div = document.createElement('div');
-        div.classList.add('partitions');
-        if (i == 0) {
-            div.classList.add('partitionsFirst');
-        }
-        for (let j = 0; j < 4; j++) {
-            let divMovies = document.createElement('div');
-            divMovies.classList.add('movie');
-            divMovies.dataset.id = `${trendingResults[j + i * 4].id}`;
-            let movieImgCount = 0;
-            let movieImg = await fetch(`https://api.themoviedb.org/3/tv/${trendingResults[j + i * 4].id}/images`, options).then((response) => response.json());
-            for (let i = 0; i < movieImg.backdrops.length; i++) {
-                if (movieImg.backdrops[i].iso_639_1 == 'en' && movieImgCount == 0) {
-                    movieImgCount = 1;
-                    movieImgPath = movieImg.backdrops[i].file_path;
-                }
+    let div = document.createElement('div');
+    div.classList.add('moviesWrapper');
+    for (let i = 0; i < trendingResults.length; i++) {
+        let divMovies = document.createElement('div');
+        divMovies.classList.add('movie');
+        divMovies.addEventListener('click', openR);
+        divMovies.dataset.id = `${trendingResults[i].id}`;
+        divMovies.dataset.type = trendingResults[i].media_type;
+        let movieImgCount = 0;
+        let movieImg = await fetch(`https://api.themoviedb.org/3/${trendingResults[i].media_type}/${trendingResults[i].id}/images`, options).then((response) => response.json());
+        for (let i = 0; i < movieImg.backdrops.length; i++) {
+            if (movieImg.backdrops[i].iso_639_1 == 'en' && movieImgCount == 0 && movieImg.backdrops.length > 0) {
+                movieImgCount = 1;
+                movieImgPath = movieImg.backdrops[i].file_path;
             }
-            if (movieImgCount == 0) {
-                movieImgPath = movieImg.backdrops[0].file_path;
-            }
-            divMovies.innerHTML = `
-            <div class="movieBackdrop" style="background-image: url('${IMG_URL + movieImgPath}')"></div>
-            <div class="movieInfo"><p class="title">${
-                trendingResults[j + i * 4].name
-            }</p><svg xmlns="http://www.w3.org/2000/svg" height="2rem" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><style>svg{fill:#ffffff}</style><path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"/></svg></div>
-            `;
-            div.appendChild(divMovies);
         }
-        trendingMovies.dataset.currentCount = '0';
-        trendingMovies.dataset.currentTranslate = '0';
-        trendingMovies.appendChild(div);
+        if (movieImgCount == 0 && movieImg.backdrops.length > 0) {
+            movieImgPath = movieImg.backdrops[0].file_path;
+        }
+        divMovies.innerHTML = `
+                <div class="movieBackdrop" style="background-image: url('${IMG_URL + movieImgPath}')"></div>
+                <div class="movieInfo"><p class="title">${
+                    trendingResults[i].title != undefined ? trendingResults[i].title : trendingResults[i].name
+                }</p><svg xmlns="http://www.w3.org/2000/svg" height="2rem" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><style>svg{fill:#ffffff}</style><path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"/></svg></div>
+                `;
+        div.appendChild(divMovies);
     }
+    document.getElementById('trendingMovies').appendChild(div);
 
     Object.keys(genresObjectResults).forEach(function (key) {
         let divGenre = document.createElement('div');
@@ -208,7 +203,6 @@ async function main() {
     });
 
     var moviesDiv = document.querySelectorAll('.movie');
-    console.log(moviesDiv);
     moviesDiv.forEach((movie) => {
         movie.addEventListener('click', openR);
     });
@@ -224,16 +218,11 @@ async function main() {
 
     slider.addEventListener('touchstart', onTouchStart);
     slider.addEventListener('touchend', onTouchEnd);
-
-    slider.addEventListener('click', (event) => {
-        console.log(event.target);
-    });
 }
 
 function onTouchStart(event) {
     slider.classList.remove('delay');
     startPoint = event.touches[0].clientX;
-    console.log(startPoint);
     slider.addEventListener('touchmove', onTouchMove);
 }
 
@@ -274,43 +263,39 @@ function openGenre(event) {
     window.location.href = site;
 }
 
-async function showMovies(genre, index, element, genreId) {
-    let resultsObj = await fetch(`https://api.themoviedb.org/3/discover/tv?sort_by=vote_count.desc&with_genres=${genreId}`, options).then((response) => response.json());
-    let results = resultsObj.results;
-    for (let i = 0; i < results.length / 4; i++) {
-        let div = document.createElement('div');
-        div.classList.add('partitions');
-        if (i == 0) {
-            div.classList.add('partitionsFirst');
-        }
-        for (let j = 0; j < 4; j++) {
-            let divMovies = document.createElement('div');
-            divMovies.classList.add('movie');
-            divMovies.addEventListener('click', openR);
-            divMovies.dataset.id = `${results[j + i * 4].id}`;
-            let movieImgCount = 0;
-            let movieImg = await fetch(`https://api.themoviedb.org/3/tv/${results[j + i * 4].id}/images`, options).then((response) => response.json());
-            for (let i = 0; i < movieImg.backdrops.length; i++) {
-                if (movieImg.backdrops[i].iso_639_1 == 'en' && movieImgCount == 0 && movieImg.backdrops.length > 0) {
-                    movieImgCount = 1;
-                    movieImgPath = movieImg.backdrops[i].file_path;
-                }
+async function showMovies(genre, index, element, genreId, type) {
+    let results = await fetch(`https://api.themoviedb.org/3/discover/tv?sort_by=vote_count.desc&with_genres=${genreId}`, options)
+        .then((response) => response.json())
+        .then((response) => response.results);
+
+    let div = document.createElement('div');
+    div.classList.add('moviesWrapper');
+    for (let i = 0; i < results.length; i++) {
+        let divMovies = document.createElement('div');
+        divMovies.classList.add('movie');
+        divMovies.addEventListener('click', openR);
+        divMovies.dataset.id = `${results[i].id}`;
+        divMovies.dataset.type = 'movie';
+        let movieImgCount = 0;
+        let movieImg = await fetch(`https://api.themoviedb.org/3/tv/${results[i].id}/images`, options).then((response) => response.json());
+        for (let i = 0; i < movieImg.backdrops.length; i++) {
+            if (movieImg.backdrops[i].iso_639_1 == 'en' && movieImgCount == 0 && movieImg.backdrops.length > 0) {
+                movieImgCount = 1;
+                movieImgPath = movieImg.backdrops[i].file_path;
             }
-            if (movieImgCount == 0 && movieImg.backdrops.length > 0) {
-                movieImgPath = movieImg.backdrops[0].file_path;
-            }
-            divMovies.innerHTML = `
-            <div class="movieBackdrop" style="background-image: url('${IMG_URL + movieImgPath}')"></div>
-            <div class="movieInfo"><p class="title">${
-                results[j + i * 4].name
-            }</p><svg xmlns="http://www.w3.org/2000/svg" height="2rem" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><style>svg{fill:#ffffff}</style><path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"/></svg></div>
-            `;
-            div.appendChild(divMovies);
         }
-        element.dataset.currentCount = '0';
-        element.dataset.currentTranslate = '0';
-        element.appendChild(div);
+        if (movieImgCount == 0 && movieImg.backdrops.length > 0) {
+            movieImgPath = movieImg.backdrops[0].file_path;
+        }
+        divMovies.innerHTML = `
+                <div class="movieBackdrop" style="background-image: url('${IMG_URL + movieImgPath}')"></div>
+                <div class="movieInfo"><p class="title">${
+                    results[i].title != undefined ? results[i].title : results[i].name
+                }</p><svg xmlns="http://www.w3.org/2000/svg" height="2rem" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><style>svg{fill:#ffffff}</style><path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"/></svg></div>
+                `;
+        div.appendChild(divMovies);
     }
+    element.appendChild(div);
 }
 
 function hoverGenre(event) {
@@ -325,7 +310,6 @@ function nextAction(event) {
     if (event.target.innerHTML != ' arrow_forward_ios ') {
         let divInfo = event.target.parentElement.children[1];
         var partitions = document.querySelectorAll(`.${divInfo.children[0].classList[0]}`);
-        console.log(divInfo.dataset.currentCount + 1 == partitions.length - 1, divInfo.dataset.currentCount, partitions.length);
         if (divInfo.dataset.currentCount < partitions.length - 1) {
             divInfo.dataset.currentCount++;
             divInfo.style.transform = `translateX(${-1 * parseInt(divInfo.dataset.currentCount) * 156}rem)`;
@@ -341,7 +325,6 @@ function nextAction(event) {
     } else {
         let divInfo = event.target.parentElement.parentElement.children[1];
         var partitions = document.querySelectorAll(`.${divInfo.children[0].classList[0]}`);
-        console.log(divInfo.dataset.currentCount);
         if (divInfo.dataset.currentCount < partitions.length - 1) {
             divInfo.dataset.currentCount++;
             divInfo.style.transform = `translateX(${-1 * parseInt(divInfo.dataset.currentCount) * 156}rem)`;
@@ -404,7 +387,6 @@ function hoverLeave(event) {
 }
 
 function openR(event) {
-    console.log(event.target);
     if (event.target.dataset.id != undefined) {
         movieId = event.target.dataset.id;
         site = 'watchShows.html?id=' + movieId;

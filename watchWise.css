@@ -456,6 +456,12 @@ header a {
     display: none;
 }
 
+.moviesWrapper {
+    display: flex;
+    margin: 0 5vw;
+    gap: 3vw;
+}
+
 .movie {
     width: min-content;
     cursor: pointer;

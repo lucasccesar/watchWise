@@ -60,6 +60,7 @@ header {
     font-size: calc(0.5rem + 2vw);
     border: none;
     outline: none;
+    color: black;
 }
 
 .searchBar button {
@@ -448,7 +449,6 @@ main {
 #cast::-webkit-scrollbar {
     display: none;
 }
-
 
 .face {
     width: 25vw;

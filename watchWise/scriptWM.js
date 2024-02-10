@@ -124,6 +124,11 @@ async function main() {
             nome.innerText = e.name;
             actor.appendChild(nome);
 
+            var character = document.createElement('p');
+            character.innerText = `(${e.character})`;
+            character.classList.add('character');
+            actor.appendChild(character);
+
             cast.appendChild(actor);
             j++;
         }
@@ -169,7 +174,7 @@ async function main() {
         imgId.style.backgroundImage = `url("${imgUrl + poster_path}")`;
         imgId.style.backgroundSize = `cover`;
         imgId.addEventListener('click', abrirSimilar);
-        console.log(poster_path)
+        console.log(poster_path);
     });
 }
 
