@@ -26,7 +26,7 @@ const cast = document.getElementById('cast');
 var j = 0;
 const filme = document.getElementById('filme');
 const play = document.getElementById('play');
-play.addEventListener('click', abrir);
+/* play.addEventListener('click', abrir); */
 const iframe = document.getElementById('iframe');
 const mainHtml = document.querySelector('main');
 var similarFull = [];

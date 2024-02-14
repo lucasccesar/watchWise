@@ -19,7 +19,7 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: calc(9vh + 2vw);
+    height: calc(7vh + 5vw);
     position: relative;
 }
 
@@ -100,7 +100,7 @@ header {
 }
 
 header img {
-    height: calc(5rem + 1vw);
+    height: calc(3rem + 7vw);
     cursor: pointer;
 }
 
@@ -113,7 +113,7 @@ header p,
 header a {
     color: white;
     font-weight: bolder !important;
-    font-size: calc(1rem + 1vw);
+    font-size: calc(0.3rem + 3vw);
     cursor: pointer;
     width: fit-content;
     text-decoration: none;
@@ -180,7 +180,7 @@ main {
 }
 
 .top200 {
-    top: calc(-14vw - 10vh);
+    top: calc((-22vw - 8vh) + (4vw + 1vh));
 }
 
 .top {
@@ -196,7 +196,7 @@ main {
 }
 
 #diretores p {
-    font-size: calc(0.3rem + 2vw);
+    font-size: calc(0.3rem + 2.5vw);
 }
 
 #nome {
@@ -216,17 +216,15 @@ main {
     border-radius: 5px;
     font-size: calc(0.1rem + 2vw);
     background-color: rgba(255, 255, 255, 0.2);
-    padding: 5px;
+    padding: 1.3vw;
     font-weight: bold;
     backdrop-filter: blur(10px);
 }
 
 #telas {
-    margin-top: 10px;
+    margin-top: 10px !important;
     display: flex;
-    gap: 4px;
-    /* width: 90vw; */
-    margin-top: 2vw !important;
+    gap: 1vw;
 }
 
 #play {
@@ -263,6 +261,7 @@ main {
     align-items: center;
     justify-content: space-around;
     backdrop-filter: blur(5px);
+    padding: 0.5vw;
 }
 
 .info {
@@ -296,6 +295,7 @@ main {
     font-weight: bold;
     font-size: calc(0.9rem + 2vw);
     cursor: pointer;
+    margin-bottom: 1.5vw !important;
 }
 
 #seasons option {
@@ -303,7 +303,8 @@ main {
     border: none;
     text-transform: uppercase;
     font-weight: bold;
-    font-size: calc(1.3rem + 2vw);
+    font-size: calc(1.5rem + 0.5vw);
+    max-width: min-content;
 }
 
 #btnEp {
@@ -415,10 +416,15 @@ main {
     max-width: 70%;
 }
 
+.mainDiv {
+    margin-top: 2vw;
+}
+
 .description {
     color: #404d53;
     font-weight: bold;
     font-size: calc(0.9rem + 2vw);
+    margin-bottom: 1.5vw !important;
 }
 
 #description {
@@ -495,7 +501,7 @@ main {
     padding-left: 5%;
     -ms-overflow-style: none;
     scrollbar-width: none;
-    margin-bottom: 10vw;
+    margin-bottom: 5vw;
 }
 
 #similarMovies::-webkit-scrollbar {
@@ -568,4 +574,39 @@ div.movie:last-child {
     background: linear-gradient(60deg, #5073b8, #1098ad, #07b39b, #6fba82);
     border-radius: calc(2 * var(--borderWidth));
     z-index: -1;
+}
+
+@media (767px < width <= 1023px) {
+    .searchBtn {
+        font-size: calc(0.9rem + 4vw) !important;
+    }
+
+    header a,
+    header p {
+        font-size: calc(0.3rem + 3vw);
+    }
+
+    header img {
+        height: calc(2rem + 10vw);
+    }
+
+    #diretores p {
+        font-size: calc(0.3rem + 3vw);
+    }
+
+    #nome {
+        font-size: calc(2.3rem + 4vw);
+    }
+
+    .genero {
+        border-radius: 8px;
+    }
+
+    #playArrow {
+        font-size: calc(1.3rem + 3vw);
+    }
+
+    .titulo {
+        font-size: calc(0.3rem + 1.5vw);
+    }
 }

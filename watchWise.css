@@ -20,7 +20,7 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: calc(9vh + 2vw);
+    height: calc(7vh + 5vw);
     position: relative;
 }
 
@@ -98,7 +98,7 @@ header {
 }
 
 header img {
-    height: calc(5rem + 1vw);
+    height: calc(3rem + 7vw);
     cursor: pointer;
 }
 
@@ -111,7 +111,7 @@ header p,
 header a {
     color: white;
     font-weight: bolder !important;
-    font-size: calc(1rem + 1vw);
+    font-size: calc(0.3rem + 3vw);
     cursor: pointer;
     width: fit-content;
     text-decoration: none;
@@ -505,4 +505,44 @@ header a {
     flex-wrap: wrap;
     justify-content: space-between;
     gap: 1rem;
+}
+
+@media (767px < width <= 1023px) {
+    .searchBtn {
+        font-size: calc(0.9rem + 4vw) !important;
+    }
+
+    header a,
+    header p {
+        font-size: calc(0.3rem + 3vw);
+    }
+
+    header img {
+        height: calc(2rem + 10vw);
+    }
+
+    .btn {
+        width: calc(2rem + 5vw) !important;
+        height: calc(0.1rem + 0.5vw) !important;
+    }
+
+    .genres p {
+        font-size: calc(2rem + 2vw);
+    }
+
+    .scrollPositionWrapper {
+        height: 0.25vh;
+    }
+
+    .scrollPosition {
+        height: 0.5vh;
+    }
+
+    .movieInfo .title {
+        font-size: calc(1rem + 2vw) !important;
+    }
+
+    .movieInfo svg {
+        height: calc(1rem + 2vw) !important;
+    }
 }

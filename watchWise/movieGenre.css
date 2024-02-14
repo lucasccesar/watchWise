@@ -16,7 +16,7 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: calc(9vh + 2vw);
+    height: calc(7vh + 5vw);
     position: relative;
     border-bottom: 1px solid rgb(15, 29, 37);
 }
@@ -95,7 +95,7 @@ header {
 }
 
 header img {
-    height: calc(5rem + 1vw);
+    height: calc(3rem + 7vw);
     cursor: pointer;
 }
 
@@ -108,7 +108,7 @@ header p,
 header a {
     color: white;
     font-weight: bolder !important;
-    font-size: calc(1rem + 1vw);
+    font-size: calc(0.3rem + 3vw);
     cursor: pointer;
     width: fit-content;
     text-decoration: none;

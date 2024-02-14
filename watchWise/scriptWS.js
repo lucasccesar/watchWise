@@ -261,7 +261,7 @@ async function seasonFunc() {
         divEp.id = `${i + 1}`;
         divEp.addEventListener('mouseenter', hover);
         divEp.addEventListener('mouseleave', leave);
-        divEp.addEventListener('click', abrir);
+        /* divEp.addEventListener('click', abrir); */
         divEp.classList.add('episode');
         let divImg = document.createElement('div');
         let divInfo = document.createElement('div');
