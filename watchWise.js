@@ -12,7 +12,7 @@ const IMG_URL = 'https://image.tmdb.org/t/p/original';
 const upper = document.getElementById('upper');
 const movies = document.getElementById('movies');
 const lower = document.getElementById('lower');
-const btns = document.querySelectorAll('.btn');
+const btns = document.querySelectorAll('#suggestions .btn');
 const body = document.querySelector('body');
 btns.forEach((e) => {
     e.addEventListener('click', mudar);
@@ -212,7 +212,7 @@ async function main() {
             </div>
             <div class="genresLower">
                 <button class="pass previous hidden"><span class="material-symbols-rounded" style="font-size: 70px"> arrow_back_ios </span></button>
-                <div data-genre="${genresMoviesTv[key].name}" class="genresMovies genresMoviesOnly"></div>
+                <div data-genre="${genresMoviesTv[key].name}" class="genresMovies genresMoviesOnly" data-current-count="0"></div>
                 <button class="pass next hidden"><span class="material-symbols-rounded" style="font-size: 70px"> arrow_forward_ios </span></button>
             </div>
             `;
@@ -246,7 +246,7 @@ async function main() {
             </div>
             <div class="genresLower">
                 <button class="pass previous hidden"><span class="material-symbols-rounded" style="font-size: 70px"> arrow_back_ios </span></button>
-                <div data-genre="${genresMoviesTv[key].name}" class="genresMovies genresShowsOnly"></div>
+                <div data-genre="${genresMoviesTv[key].name}" class="genresMovies genresShowsOnly" data-current-count="0"></div>
                 <button class="pass next hidden"><span class="material-symbols-rounded" style="font-size: 70px"> arrow_forward_ios </span></button>
             </div>
             `;
@@ -382,76 +382,38 @@ function leaveGenre(event) {
 }
 
 function nextAction(event) {
-    if (event.target.innerHTML != ' arrow_forward_ios ') {
-        let divInfo = event.target.parentElement.children[1];
-        var partitions = document.querySelectorAll(`.${divInfo.children[0].classList[0]}`);
-        if (divInfo.dataset.currentCount < partitions.length - 1) {
-            divInfo.dataset.currentCount++;
-            divInfo.style.transform = `translateX(${-1 * parseInt(divInfo.dataset.currentCount) * 156}rem)`;
-            if (divInfo.dataset.currentCount > 0) {
-                event.target.parentElement.children[0].classList.replace('hidden', 'visible');
-            }
-            if (divInfo.dataset.currentCount == 4) {
-                event.target.parentElement.children[2].classList.replace('visible', 'hidden');
-            }
+    let divInfo = event.target.innerHTML != ' arrow_forward_ios ' ? event.target.parentElement.children[1] : event.target.parentElement.parentElement.children[1];
+    divInfo.dataset.currentCount++;
+    if (divInfo.dataset.currentCount < 5) {
+        divInfo.firstElementChild.style.transform = `translateX(${-1 * parseInt(divInfo.dataset.currentCount) * 81.5}vw)`;
+        divInfo.parentElement.children[0].classList.replace('hidden', 'visible');
+        if (divInfo.dataset.currentCount == 4) {
+            divInfo.parentElement.children[2].classList.replace('visible', 'hidden');
         }
-        event.target.parentElement.parentElement.firstElementChild.lastElementChild.children[divInfo.dataset.currentCount - 1].classList.remove('selecionada');
-        event.target.parentElement.parentElement.firstElementChild.lastElementChild.children[divInfo.dataset.currentCount].classList.add('selecionada');
-    } else {
-        let divInfo = event.target.parentElement.parentElement.children[1];
-        var partitions = document.querySelectorAll(`.${divInfo.children[0].classList[0]}`);
-        if (divInfo.dataset.currentCount < partitions.length - 1) {
-            divInfo.dataset.currentCount++;
-            divInfo.style.transform = `translateX(${-1 * parseInt(divInfo.dataset.currentCount) * 156}rem)`;
-            if (divInfo.dataset.currentCount > 0) {
-                event.target.parentElement.parentElement.children[0].classList.replace('hidden', 'visible');
-            }
-            if (divInfo.dataset.currentCount == 4) {
-                event.target.parentElement.parentElement.children[2].classList.replace('visible', 'hidden');
-            }
-        }
-        event.target.parentElement.parentElement.parentElement.firstElementChild.lastElementChild.children[parseInt(divInfo.dataset.currentCount) - 1].classList.remove('selecionada');
-        event.target.parentElement.parentElement.parentElement.firstElementChild.lastElementChild.children[divInfo.dataset.currentCount].classList.add('selecionada');
+        divInfo.parentElement.previousElementSibling.children[1].children[parseInt(divInfo.dataset.currentCount) - 1].classList.remove('selecionada');
+        divInfo.parentElement.previousElementSibling.children[1].children[divInfo.dataset.currentCount].classList.add('selecionada');
     }
 }
 
 function previousAction(event) {
-    if (event.target.innerHTML != ' arrow_back_ios ') {
-        let divInfo = event.target.parentElement.children[1];
-        var partitions = document.querySelectorAll(`.${divInfo.children[0].classList[0]}`);
-        if (divInfo.dataset.currentCount > 0) {
-            divInfo.dataset.currentCount--;
-            divInfo.style.transform = `translateX(${-1 * parseInt(divInfo.dataset.currentCount) * 156}rem)`;
-            if (divInfo.dataset.currentCount < 4) {
-                event.target.parentElement.children[2].classList.replace('hidden', 'visible');
-            }
-            if (divInfo.dataset.currentCount == 0) {
-                event.target.parentElement.children[0].classList.replace('visible', 'hidden');
-            }
-        }
-        event.target.parentElement.parentElement.firstElementChild.lastElementChild.children[parseInt(divInfo.dataset.currentCount) + 1].classList.remove('selecionada');
-        event.target.parentElement.parentElement.firstElementChild.lastElementChild.children[divInfo.dataset.currentCount].classList.add('selecionada');
-    } else {
-        let divInfo = event.target.parentElement.parentElement.children[1];
-        var partitions = document.querySelectorAll(`.${divInfo.children[0].classList[0]}`);
+    let divInfo = event.target.innerHTML != ' arrow_back_ios ' ? event.target.parentElement.children[1] : event.target.parentElement.parentElement.children[1];
+    if (divInfo.dataset.currentCount > 0) {
         divInfo.dataset.currentCount--;
-        divInfo.style.transform = `translateX(${-1 * parseInt(divInfo.dataset.currentCount) * 156}rem)`;
-        if (divInfo.dataset.currentCount < 4) {
-            event.target.parentElement.parentElement.children[2].classList.replace('hidden', 'visible');
-        }
+        divInfo.firstElementChild.style.transform = `translateX(${-1 * parseInt(divInfo.dataset.currentCount) * 81.5}vw)`;
+        divInfo.parentElement.children[2].classList.replace('hidden', 'visible');
         if (divInfo.dataset.currentCount == 0) {
-            event.target.parentElement.parentElement.children[0].classList.replace('visible', 'hidden');
+            divInfo.parentElement.children[0].classList.replace('visible', 'hidden');
         }
-        event.target.parentElement.parentElement.parentElement.firstElementChild.lastElementChild.children[parseInt(divInfo.dataset.currentCount) + 1].classList.remove('selecionada');
-        event.target.parentElement.parentElement.parentElement.firstElementChild.lastElementChild.children[divInfo.dataset.currentCount].classList.add('selecionada');
     }
+    divInfo.parentElement.previousElementSibling.children[1].children[parseInt(divInfo.dataset.currentCount) + 1].classList.remove('selecionada');
+    divInfo.parentElement.previousElementSibling.children[1].children[divInfo.dataset.currentCount].classList.add('selecionada');
 }
 
 function hoverEnter(event) {
-    if (event.target.children[1].dataset.currentCount != 0) {
+    if (event.target.children[1].dataset.currentCount > 0) {
         event.target.children[0].classList.replace('hidden', 'visible');
     }
-    if (event.target.children[1].dataset.currentCount < event.target.children[1].children.length - 1) {
+    if (event.target.children[1].dataset.currentCount < 4) {
         event.target.children[2].classList.replace('hidden', 'visible');
     }
 }
@@ -493,7 +455,8 @@ function constant() {
     });
     width = body.offsetWidth;
     let movieSla = movies.getBoundingClientRect();
-    if (movieSla.left == -(width * 4)) {
+
+    if (movieSla.left == -(window.innerWidth * 4)) {
         let loading = document.querySelector('.btnLoading');
         movies.classList.remove('delay');
         loading.classList.remove('btnLoading');
@@ -505,7 +468,9 @@ function constant() {
     loading.style.width = `${ms / 15}%`;
     if (ms / 15 == 100) {
         ms = 0;
-        /* trocar(); */
+        if (window.getComputedStyle(document.getElementById('suggestions')).getPropertyValue('display') != 'none') {
+            trocar();
+        }
     }
 }
 
@@ -516,7 +481,7 @@ async function mudar(event) {
         for (let i = 0; i < 4; i++) {
             if (event.target == btns[i] || event.target.parentElement == btns[i]) {
                 movies.classList.add('delay');
-                movies.style.transform = `translateX(${-1 * i * 190.3}rem)`;
+                movies.style.transform = `translateX(${-1 * i * 100}vw)`;
                 currentSuggestion = i;
             }
             if (event.target == btns[i]) {
@@ -541,14 +506,14 @@ function trocar() {
     if (currentSuggestion == 4) {
         btns[0].firstElementChild.classList.add('btnLoading');
         loading.classList.remove('btnLoading');
-        movies.style.transform = `translateX(-${190.3 * currentSuggestion}rem)`;
+        movies.style.transform = `translateX(-${100 * currentSuggestion}vw)`;
         currentSuggestion = 0;
     } else if (loading.parentElement.nextElementSibling != null) {
         movies.classList.add('delay');
         loading.style.width = `0%`;
         loading.parentElement.nextElementSibling.firstElementChild.classList.add('btnLoading');
         loading.classList.remove('btnLoading');
-        movies.style.transform = `translateX(-${190.3 * currentSuggestion}rem)`;
+        movies.style.transform = `translateX(-${100 * currentSuggestion}vw)`;
     }
 }
 

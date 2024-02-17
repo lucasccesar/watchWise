@@ -379,28 +379,6 @@ main {
     height: 82px;
 }
 
-.movie-info h3 {
-    font-size: calc(0.8rem + 2vw);
-}
-
-.movie-info span {
-    background-color: #060607;
-    border-radius: 10px;
-    padding: 10px 15px;
-}
-
-.green {
-    color: green;
-}
-
-.orange {
-    color: orange;
-}
-
-.red {
-    color: red;
-}
-
 .movie {
     font-family: 'Raleway';
     width: min-content;
@@ -466,5 +444,150 @@ div.movie:last-child {
 
     .titulo {
         font-size: calc(0.3rem + 1.5vw);
+    }
+}
+
+@media (1024px <= width) {
+    header {
+        height: calc(4rem + 2vw);
+        padding: 0.5vw 1vw;
+    }
+
+    #headerDiv {
+        gap: 2vw;
+    }
+
+    .searchBtn {
+        font-size: calc(0.7rem + 1vw) !important;
+    }
+
+    header img {
+        height: calc(3rem + 1.5vw);
+    }
+
+    header p,
+    header a {
+        font-size: calc(1rem + 0.5vw);
+    }
+
+    #bgImg {
+        width: 100%;
+        align-items: center;
+        height: 75vh;
+    }
+
+    main {
+        width: 80%;
+        height: 0;
+        margin: auto;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        z-index: 100000;
+    }
+
+    .top200 {
+        top: -233px;
+    }
+
+    #diretores,
+    #nome,
+    #generos,
+    #telas,
+    .description,
+    #description {
+        padding: 0%;
+    }
+
+    #diretores p {
+        font-size: calc(1rem + 0.4vw);
+    }
+
+    #nome {
+        font-size: calc(3rem + 2vw);
+    }
+
+    .genero {
+        font-size: calc(0.7rem + 0.3vw);
+        padding: 5px;
+    }
+
+    #play {
+        border-radius: 1vw;
+    }
+
+    #playArrow {
+        font-size: calc(2rem + 2vw);
+    }
+
+    #telas {
+        gap: 0.6vw;
+    }
+
+    .tela {
+        height: calc(2rem + 6vw);
+        border-radius: 1vw;
+        justify-content: space-around;
+        padding: 0;
+    }
+
+    .titulo,
+    .tela p {
+        font-size: calc(0.6rem + 0.5vw);
+    }
+
+    .info {
+        font-size: calc(0.6rem + 1.2vw) !important;
+    }
+
+    .description {
+        font-size: calc(1rem + 0.5vw);
+        margin: 0;
+    }
+
+    #description {
+        font-size: calc(0.8rem + 0.4vw);
+    }
+
+    #cast {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        padding: 0;
+        gap: 0;
+    }
+
+    .face {
+        width: calc(1rem + 5vw);
+        height: calc(1rem + 5vw);
+    }
+
+    .actor p {
+        font-size: calc(0.6rem + 0.5vw);
+    }
+
+    .mainDiv {
+        margin-top: 1vw;
+        gap: 0.5vw;
+        display: flex;
+        flex-direction: column;
+    }
+
+    #similarMovies {
+        flex-wrap: wrap;
+        padding: 0;
+        overflow-x: visible;
+    }
+
+    .imagem {
+        width: calc(1rem + 10vw);
+        height: calc(1.5rem + 15vw);
+    }
+
+    div.actor:last-child,
+    div.episode:last-child,
+    div.movie:last-child {
+        margin-right: 0vw;
     }
 }

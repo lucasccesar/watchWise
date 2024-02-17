@@ -44,6 +44,25 @@ var epNum = 0;
 let expandSearch = document.getElementById('expandSearch');
 let isSearchExpanded = false;
 let search = document.querySelector('#searchBar');
+const btnEp = document.getElementById('btnEp');
+btnEp.addEventListener('mouseenter', btnsAppear);
+btnEp.addEventListener('mouseleave', btnsDisappear);
+
+function btnsAppear() {
+    if (current + 1 > 1 && current + 1 < Math.ceil(episodesCount / 4)) {
+        avancar.classList.replace('hidden', 'visible');
+        anterior.classList.replace('hidden', 'visible');
+    } else if (current + 1 < Math.ceil(episodesCount / 4)) {
+        avancar.classList.replace('hidden', 'visible');
+    } else {
+        anterior.classList.replace('hidden', 'visible');
+    }
+}
+
+function btnsDisappear() {
+    avancar.classList.replace('visible', 'hidden');
+    anterior.classList.replace('visible', 'hidden');
+}
 
 expandSearch.addEventListener('click', () => {
     if (window.getComputedStyle(document.getElementById('searchBarWrapper')).getPropertyValue('display') != 'none') {
@@ -247,9 +266,7 @@ main();
 async function seasonFunc() {
     current = 0;
     episodes.innerHTML = '';
-    episodes.style.transform = `translateX(0)`;
-    avancar.style.visibility = 'visible';
-    anterior.style.visibility = 'hidden';
+    episodes.style.transform = `translateX(0vw)`;
     var seasonInfo = await fetch(`https://api.themoviedb.org/3/tv/${movieId}/season/${seasons.value == '' ? 1 : seasons.value}?language=en-US`, options).then((response) => response.json());
     episodesCount = seasonInfo.episodes.length;
     divCount = Math.ceil(episodesCount / 4);
@@ -267,7 +284,9 @@ async function seasonFunc() {
         let divInfo = document.createElement('div');
         divImg.style.backgroundImage = `url('${imgUrl + episodeInfo.still_path}')`;
         divImg.classList.add('episodeImg');
-        /* divImg.style.filter = 'grayscale(70%)'; */
+        if(window.getComputedStyle(document.querySelector('#btnEp button')).getPropertyValue('display') != 'none'){
+            divImg.style.filter = 'grayscale(70%)';
+        }
         divEp.appendChild(divImg);
         episodes.appendChild(divEp);
         divInfo.classList.add('episodeInfo');
@@ -284,25 +303,35 @@ async function seasonFunc() {
 }
 
 function proximo() {
-    if (current < (episodesCount % 4 == 0 ? episodesCount / 4 - 1 : Math.floor(episodesCount / 4))) {
+    if (current < Math.floor(episodesCount / 4)) {
         current++;
-        if (current >= (episodesCount % 4 == 0 ? episodesCount / 4 - 1 : Math.floor(episodesCount / 4))) {
-            avancar.style.visibility = 'hidden';
+        console.log(episodesCount / 4, current + 1);
+        if (current + 1 >= episodesCount / 4) {
+            avancar.classList.replace('visible', 'hidden');
+        }
+        anterior.classList.replace('hidden', 'visible');
+        if (current != Math.ceil(episodesCount / 4) - 1 || episodesCount % 4 == 0) {
+            episodes.style.transform = `translateX(${-current * 81.5}vw)`;
+        } else {
+            episodes.style.transform = `translateX(${-(current - 1) * 81.5 - 18.875 * (episodesCount % 4) - 1.5 * (episodesCount % 4)}vw)`;
         }
     }
-    anterior.style.visibility = 'visible';
-    episodes.style.transform = `translateX(${-current * 78}vw)`;
 }
 
 function voltar() {
     if (current > 0) {
         current--;
         if (current == 0) {
-            anterior.style.visibility = 'hidden';
+            anterior.classList.replace('visible', 'hidden');
+        }
+        avancar.classList.replace('hidden', 'visible');
+        console.log(episodes.style.transform.split('(')[1].split('v')[0]);
+        if (current > 0) {
+            episodes.style.transform = `translateX(${parseFloat(episodes.style.transform.split('(')[1].split('v')[0]) + 81.5}vw)`;
+        } else {
+            episodes.style.transform = `translateX(0vw)`;
         }
     }
-    avancar.style.visibility = 'visible';
-    episodes.style.transform = `translateX(${-current * 78}vw)`;
 }
 
 function getColor(vote) {

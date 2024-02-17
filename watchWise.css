@@ -6,7 +6,7 @@
 }
 
 html {
-    overflow-x: hidden;
+    overflow-x: initial !important;
 }
 
 body {
@@ -130,13 +130,7 @@ header a {
 
 #upper {
     position: relative;
-}
-
-#upper > #suggestions {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    z-index: 2;
+    overflow: hidden;
 }
 
 #suggestionsWrapper {
@@ -159,11 +153,18 @@ header a {
     margin-bottom: 2vw;
 }
 
+#upper > #suggestions {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+}
+
 #suggestions {
-    display: none;
     height: min-content;
-    gap: 0.5rem;
-    margin-bottom: 2vw;
+    display: none;
+    gap: 10px;
+    margin: 0px 10% 2% 0px;
 }
 
 .btn {
@@ -203,7 +204,7 @@ header a {
 }
 
 .fundo {
-    min-width: 100%;
+    min-width: 100vw;
     height: max-content;
 }
 
@@ -239,12 +240,6 @@ header a {
 
 .btnWatch:hover {
     background-color: rgb(209, 209, 209);
-}
-
-.description {
-    color: white;
-    width: 600px;
-    font-size: 1.6rem;
 }
 
 .title {
@@ -300,9 +295,6 @@ header a {
 
 .pass {
     display: none;
-    border: none;
-    z-index: 2;
-    width: 16.5rem;
 }
 
 .hidden {
@@ -382,15 +374,6 @@ header a {
 
 .pageCount {
     display: none;
-    height: fit-content;
-    gap: 4px;
-}
-
-.pageCounts {
-    width: 5vw;
-    height: 3px;
-    background-color: rgba(255, 255, 255, 0.3);
-    border-radius: 10px;
 }
 
 .scrollPositionWrapper {
@@ -444,7 +427,6 @@ header a {
 }
 
 .genresMovies {
-    transition: 1s;
     display: flex;
     gap: 3vw;
     overflow-y: scroll;
@@ -544,5 +526,162 @@ header a {
 
     .movieInfo svg {
         height: calc(1rem + 2vw) !important;
+    }
+}
+
+@media (1024px <= width) {
+    header {
+        height: calc(4rem + 2vw);
+        padding: 0.5vw 1vw;
+    }
+
+    #headerDiv {
+        gap: 2vw;
+    }
+
+    .searchBtn {
+        font-size: calc(0.7rem + 1vw) !important;
+    }
+
+    header img {
+        height: calc(3rem + 1.5vw);
+    }
+
+    header p,
+    header a {
+        font-size: calc(1rem + 0.5vw);
+    }
+
+    .filme {
+        height: 80vh;
+        background-position-y: 30%;
+    }
+
+    .infoMobile {
+        display: none;
+    }
+
+    .info {
+        display: block;
+    }
+
+    .infoInner {
+        margin-bottom: 2%;
+        gap: 1.3vw;
+        padding: calc(1rem + 0.5vw);
+        border-radius: 20px;
+        align-items: normal;
+        flex-direction: column;
+    }
+
+    .title {
+        font-size: calc(1rem + 2vw);
+    }
+
+    .description {
+        color: white;
+        max-width: 32vw;
+        font-size: calc(0.4rem + 0.7vw);
+    }
+
+    .btnWatch {
+        padding: calc(0.2rem + 0.7vw) calc(0.3rem + 3vw);
+        font-size: calc(1rem + 0.5vw);
+    }
+
+    #play_arrow {
+        font-size: calc(2rem + 0.5vw);
+    }
+
+    #suggestionsWrapper {
+        display: none;
+    }
+
+    #suggestions {
+        display: flex;
+        gap: 0.5vw;
+    }
+
+    .delay {
+        transition: 800ms;
+    }
+
+    .btn {
+        width: calc(1.6rem + 3vw) !important;
+        height: calc(0.1rem + 0.2vw) !important;
+        background-color: rgba(255, 255, 255, 0.3);
+        border-radius: 1rem;
+        cursor: pointer;
+    }
+
+    .btnLoading {
+        height: 100%;
+        width: 50%;
+        background-color: rgba(255, 255, 255, 1);
+        border-radius: 1rem;
+    }
+
+    #lower {
+        width: 80vw;
+    }
+
+    .genresUpper {
+        align-items: flex-end;
+    }
+
+    .pageCount {
+        display: flex;
+        height: fit-content;
+        gap: calc(0.2rem + 0.1vw);
+    }
+
+    .pageCounts {
+        width: calc(1rem + 1vw);
+        height: calc(0.1rem + 0.1vw);
+        background-color: rgba(255, 255, 255, 0.3);
+        border-radius: 10px;
+    }
+
+    .selecionada {
+        background-color: rgba(255, 255, 255, 1);
+    }
+
+    .genres {
+        margin-top: 3vw;
+    }
+
+    .genres p {
+        font-size: calc(1rem + 1vw);
+    }
+
+    .scrollPositionWrapper {
+        display: none;
+    }
+
+    .pass {
+        display: block;
+        border: none;
+        z-index: 2;
+        width: 8.5vw;
+    }
+
+    .moviesWrapper {
+        transition: 1s;
+        margin: 0 10vw;
+        gap: 1.5vw;
+    }
+
+    .movieBackdrop {
+        width: 18.875vw;
+    }
+
+    .movieInfo .title {
+        font-size: calc(0.7rem + 0.8vw) !important;
+        font-weight: normal;
+        max-width: 90%;
+    }
+
+    .movieInfo svg {
+        height: calc(0.6rem + 0.7vw) !important;
     }
 }

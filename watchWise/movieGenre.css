@@ -137,6 +137,12 @@ header a {
     visibility: hidden;
 }
 
+#genreName {
+    font-size: calc(2rem + 2vw);
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
 #movies {
     display: flex;
     flex-wrap: wrap;
@@ -162,7 +168,7 @@ header a {
 .movieInfo {
     font-size: 22px;
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     justify-content: space-between;
     padding: 10px;
     max-height: 47px;
@@ -186,12 +192,20 @@ header a {
     align-items: center;
 }
 
-#back {
+.back {
     display: flex;
     align-items: center;
     font-size: calc(0.5rem + 2vw);
     font-weight: bold;
     cursor: pointer;
+}
+
+.back span {
+    font-weight: bold;
+    font-size: calc(0.5rem + 2vw);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 #pages {
@@ -223,4 +237,61 @@ header a {
 .pageSelected {
     background-color: white;
     color: rgba(5, 21, 30, 1);
+}
+
+@media (1024px <= width) {
+    header {
+        height: calc(4rem + 2vw);
+        padding: 0.5vw 1vw;
+    }
+
+    #headerDiv {
+        gap: 2vw;
+    }
+
+    .searchBtn {
+        font-size: calc(0.7rem + 1vw) !important;
+    }
+
+    header img {
+        height: calc(3rem + 1.5vw);
+    }
+
+    header p,
+    header a {
+        font-size: calc(1rem + 0.5vw);
+    }
+
+    #genreName {
+        font-size: calc(2rem + 1vw);
+    }
+
+    #movies {
+        width: 80vw;
+    }
+
+    .movieBackdrop {
+        width: 18.875vw;
+        border-radius: 1vw;
+    }
+
+    .title {
+        font-size: calc(0.4rem + 1vw);
+    }
+
+    .movieInfo {
+        max-height: max-content;
+    }
+
+    .movieInfo svg {
+        height: calc(0.6rem + 0.7vw) !important;
+    }
+
+    .back {
+        font-size: calc(1rem + 0.5vw);
+    }
+
+    .back span {
+        font-size: calc(1rem + 0.8vw);
+    }
 }
