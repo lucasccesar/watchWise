@@ -25,32 +25,25 @@ const trending = document.getElementById('trending');
 const trendingMovies = document.getElementById('trendingMovies');
 var resultsImgs = [];
 const genresArray = ['Action', 'Romance', 'Adventure', 'Family', 'Comedy', 'Science Fiction'];
-let expandSearch = document.getElementById('expandSearch');
-let isSearchExpanded = false;
-let search = document.querySelector('#searchBar');
 let startPoint = 0;
 let drag = 0;
 let slider = document.querySelector('#movies');
 let currentMovie = 0;
 var genresMovies = document.querySelectorAll('.genresMovies');
 
-expandSearch.addEventListener('click', () => {
-    if (window.getComputedStyle(document.getElementById('searchBarWrapper')).getPropertyValue('display') != 'none') {
-        if (isSearchExpanded) {
-            document.getElementById('searchBarWrapper').style.width = '0rem';
-            isSearchExpanded = false;
-        } else {
-            document.getElementById('searchBarWrapper').style.width = '37rem';
-            isSearchExpanded = true;
-        }
-    } else {
-        if (isSearchExpanded) {
-            document.getElementById('searchBarWrapperMobile').style.width = '0vw';
-            isSearchExpanded = false;
-        } else {
-            document.getElementById('searchBarWrapperMobile').style.width = '81vw';
-            isSearchExpanded = true;
-        }
+/*=============== SEARCH ===============*/
+const search = document.getElementById('search'),
+    searchBtn = document.getElementById('search-btn');
+
+/* Search show */
+searchBtn.addEventListener('click', () => {
+    search.classList.add('show-search');
+});
+
+/* Search hidden */
+search.addEventListener('click', (event) => {
+    if (event.target == search) {
+        search.classList.remove('show-search');
     }
 });
 
@@ -385,7 +378,7 @@ function constant() {
     loading.style.width = `${ms / 15}%`;
     if (ms / 15 == 100) {
         ms = 0;
-        if(window.getComputedStyle(document.getElementById('suggestions')).getPropertyValue('display') != 'none'){
+        if (window.getComputedStyle(document.getElementById('suggestions')).getPropertyValue('display') != 'none') {
             trocar();
         }
     }

@@ -31,8 +31,10 @@
 
         <div class="search" id="search">
             <form method="get" action="watchWise/search.html" class="search__form">
-               <i class="ri-search-line search__icon"></i>
-               <input type="search" placeholder="What are you looking for?" class="search__input" name="query" autocomplete="off">
+                <button type="submit">
+                    <i class="ri-search-line search__icon"></i>
+                </button>
+               <input type="search" placeholder="What are you looking for?" class="search__input" name="query" autocomplete="off" required>
                <input type="hidden" value="moviesAndShows" name="media_type">
             </form>
          </div>
