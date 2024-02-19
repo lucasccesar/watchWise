@@ -245,7 +245,6 @@ async function main() {
         return object.backdrop_path != null;
     });
     actorShowsActing.sort((a, b) => Number(b.episode_count) - Number(a.episode_count));
-    console.log(actorShowsActing);
 
     var actorShowsJob = [...actorShows.crew];
     actorShowsJob = actorShowsJob.filter((object) => {
@@ -298,7 +297,6 @@ async function seasonFunc() {
 function proximo() {
     if (current < Math.floor(episodesCount / 4)) {
         current++;
-        console.log(episodesCount / 4, current + 1);
         if (current + 1 >= episodesCount / 4) {
             avancar.classList.replace('visible', 'hidden');
         }
@@ -318,7 +316,6 @@ function voltar() {
             anterior.classList.replace('visible', 'hidden');
         }
         avancar.classList.replace('hidden', 'visible');
-        console.log(episodes.style.transform.split('(')[1].split('v')[0]);
         if (current > 0) {
             episodes.style.transform = `translateX(${parseFloat(episodes.style.transform.split('(')[1].split('v')[0]) + 81.5}vw)`;
         } else {
@@ -366,50 +363,3 @@ function abrir(event) {
     mainHtml.classList.replace('top200', 'top');
 }
 
-/* async function seasonInfo(id) {
-    document.getElementById(`selectEpisode${id}`).innerHTML = '';
-    var seasonNum = document.getElementById(`selectSeason${id}`).value;
-    var select2 = document.getElementById(`selectEpisode${id}`);
-    var y = await fetch(`https://api.themoviedb.org/3/tv/${id}/season/${seasonNum}?language=en-US&${API_KEY}`)
-        .then((response) => response.json())
-        .catch((err) => console.error(err));
-    for (i = 0; i < y.episodes.length; i++) {
-        var option = document.createElement('option');
-        option.value = `${i + 1}`;
-        option.innerHTML = `Episódio ${i + 1}`;
-        select2.appendChild(option);
-    }
-} */
-
-/* const urlParams = new URLSearchParams(window.location.search);
-const movieId = urlParams.get('id');
-const body = document.querySelector("body")
-const vidsrc = "https://vidsrc.to/embed/movie/"
-
-function getIP(){
-    var ip = fetch('https://api.ipify.org?format=json')
-   .then(response => response.json())
-   .then(data => data.ip);
-
-   return ip
-}
-
-async function main() {
-    var ip = await getIP()
-    console.log(ip)
-    if(ip=='179.189.246.61'){
-        console.log("alou")
-    } else{
-        console.log("intruso")
-    }
-}
-
-main()
-
-var iframe = document.createElement("iframe")
-iframe.src = vidsrc + movieId
-iframe.height = "500"
-iframe.width = "900"
-iframe.title = "filme"
-body.appendChild(iframe)
- */

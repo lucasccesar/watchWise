@@ -167,7 +167,6 @@ async function main() {
         imgId.style.backgroundImage = `url("${imgUrl + poster_path}")`;
         imgId.style.backgroundSize = `cover`;
         imgId.addEventListener('click', abrirSimilar);
-        console.log(poster_path);
     });
 }
 
