@@ -25,27 +25,19 @@ document.getElementById('genreName').innerText = `${genreName}`;
 document.getElementById('back').addEventListener('click', back);
 window.top.document.title = `${genreName} ${type == 'movie' ? 'Movies' : 'Shows'}`;
 
-let expandSearch = document.getElementById('expandSearch');
-let isSearchExpanded = false;
-let search = document.querySelector('#searchBar');
+/*=============== SEARCH ===============*/
+const search = document.getElementById('search'),
+    searchBtn = document.getElementById('search-btn');
 
-expandSearch.addEventListener('click', () => {
-    if (window.getComputedStyle(document.getElementById('searchBarWrapper')).getPropertyValue('display') != 'none') {
-        if (isSearchExpanded) {
-            document.getElementById('searchBarWrapper').style.width = '0rem';
-            isSearchExpanded = false;
-        } else {
-            document.getElementById('searchBarWrapper').style.width = '37rem';
-            isSearchExpanded = true;
-        }
-    } else {
-        if (isSearchExpanded) {
-            document.getElementById('searchBarWrapperMobile').style.width = '0vw';
-            isSearchExpanded = false;
-        } else {
-            document.getElementById('searchBarWrapperMobile').style.width = '81vw';
-            isSearchExpanded = true;
-        }
+/* Search show */
+searchBtn.addEventListener('click', () => {
+    search.classList.add('show-search');
+});
+
+/* Search hidden */
+search.addEventListener('click', (event) => {
+    if (event.target == search) {
+        search.classList.remove('show-search');
     }
 });
 
