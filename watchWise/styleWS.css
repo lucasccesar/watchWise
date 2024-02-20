@@ -162,26 +162,43 @@ input[type='search']::-webkit-search-cancel-button {
     background-position-y: 50%;
 }
 
-.fechadoImg {
-    height: 75vh;
-}
-
-.abertoImg {
-    height: 100vh;
-    transition: 500ms;
-}
-
-.iframeFechado {
+#iframeDiv {
     height: 0px;
-    width: 0px;
     display: none;
+    flex-direction: column;
+    align-items: center;
 }
 
-.iframeAberto {
-    visibility: visible;
-    transition: 500ms;
-    width: 1500px;
-    height: 843px;
+#iframe {
+    width: 80vw;
+    height: 93vh;
+}
+
+#servers {
+    margin-top: 1vw;
+    display: flex;
+    gap: 0.4vw;
+}
+
+.server {
+    font-size: 1.6rem;
+    padding: 0.4vw 0.6vw;
+    border-radius: 0.3vw;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(5px);
+    color: white;
+    cursor: pointer;
+    transition: 100ms;
+}
+
+.server:hover {
+    background-color: rgba(255, 255, 255, 0.11);
+}
+
+.serverSelected {
+    background-color: #00ff2c1c !important;
+    color: #00ff01;
 }
 
 #bgColor {

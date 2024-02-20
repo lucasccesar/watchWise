@@ -26,12 +26,15 @@ const cast = document.getElementById('cast');
 var j = 0;
 const filme = document.getElementById('filme');
 const play = document.getElementById('play');
-/* play.addEventListener('click', abrir); */
+play.addEventListener('click', abrir);
 const iframe = document.getElementById('iframe');
 const mainHtml = document.querySelector('main');
 var similarFull = [];
 var similar = [];
 const similarMovies = document.getElementById('similarMovies');
+document.querySelectorAll('.server').forEach((e) => {
+    e.addEventListener('click', changeServer);
+});
 
 /*=============== SEARCH ===============*/
 const search = document.getElementById('search'),
@@ -40,6 +43,7 @@ const search = document.getElementById('search'),
 /* Search show */
 searchBtn.addEventListener('click', () => {
     search.classList.add('show-search');
+    document.getElementById('searchInput').focus();
 });
 
 /* Search hidden */
@@ -182,11 +186,38 @@ function getColor(vote) {
     }
 }
 
-function abrir() {
+function abrir(event) {
+    window.scrollTo(0, bgImg);
     iframe.src = `https://vidsrc.to/embed/movie/${movieId}`;
-    bgImg.classList.replace('fechadoImg', 'abertoImg');
-    iframe.classList.replace('iframeFechado', 'iframeAberto');
+    iframeDiv.style.height = '100vh';
+    iframeDiv.style.display = 'flex';
+    bgImg.style.height = 'fit-content';
+    bgImg.style.paddingTop = '2vw';
+
     mainHtml.classList.replace('top200', 'top');
+}
+
+function changeServer(event) {
+    if (!Array.from(event.target.classList).includes('serverSelected')) {
+        switch (event.target.id) {
+            case 'vidSrc':
+                iframe.src = `https://vidsrc.to/embed/movie/${movieId}`;
+                break;
+            case 'moviesAPI':
+                iframe.src = `https://moviesapi.club/movie/${movieId}`;
+                break;
+            case '2embed':
+                iframe.src = `https://www.2embed.cc/embed/${movieId}`;
+                break;
+            case 'smashyStream':
+                iframe.src = `https://embed.smashystream.com/playere.php?tmdb=${movieId}`;
+                break;
+            case 'superEmbed':
+                iframe.src = `https://multiembed.mov/?video_id=${movieId}&tmdb=1`;
+        }
+        document.querySelector('.serverSelected').classList.remove('serverSelected');
+        event.target.classList.add('serverSelected');
+    }
 }
 
 function abrirSimilar(event) {

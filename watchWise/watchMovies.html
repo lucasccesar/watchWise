@@ -34,13 +34,22 @@
                 <button type="submit">
                     <i class="ri-search-line search__icon"></i>
                 </button>
-                <input type="search" placeholder="What are you looking for?" class="search__input" name="query" autocomplete="off" required />
+                <input id="searchInput" type="search" placeholder="What are you looking for?" class="search__input" name="query" autocomplete="off" required autofocus />
                 <input type="hidden" value="moviesAndShows" name="media_type" />
             </form>
         </div>
 
         <div id="bgImg" class="fechadoImg">
-            <iframe src="" id="iframe" class="iframeFechado" allowfullscreen="true"></iframe>
+            <div id="iframeDiv">
+                <iframe src="" id="iframe" allowfullscreen="true"></iframe>
+                <div id="servers">
+                    <button id="vidSrc" class="server serverSelected">VidSrc</button>
+                    <button id="moviesAPI" class="server">MoviesAPI</button>
+                    <button id="2embed" class="server">2Embed</button>
+                    <button id="smashyStream" class="server">SmashyStream</button>
+                    <button id="superEmbed" class="server">SuperEmbed</button>
+                </div>
+            </div>
         </div>
 
         <div id="bgColor">

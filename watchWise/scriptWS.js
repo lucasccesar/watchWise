@@ -26,6 +26,7 @@ const cast = document.getElementById('cast');
 var j = 0;
 const filme = document.getElementById('filme');
 const iframe = document.getElementById('iframe');
+const iframeDiv = document.getElementById('iframeDiv');
 const mainHtml = document.querySelector('main');
 var similarFull = [];
 var similar = [];
@@ -44,6 +45,9 @@ var epNum = 0;
 const btnEp = document.getElementById('btnEp');
 btnEp.addEventListener('mouseenter', btnsAppear);
 btnEp.addEventListener('mouseleave', btnsDisappear);
+document.querySelectorAll('.server').forEach((e) => {
+    e.addEventListener('click', changeServer);
+});
 
 function btnsAppear() {
     if (current + 1 > 1 && current + 1 < Math.ceil(episodesCount / 4)) {
@@ -68,6 +72,7 @@ const search = document.getElementById('search'),
 /* Search show */
 searchBtn.addEventListener('click', () => {
     search.classList.add('show-search');
+    document.getElementById('searchInput').focus()
 });
 
 /* Search hidden */
@@ -270,13 +275,13 @@ async function seasonFunc() {
         divEp.id = `${i + 1}`;
         divEp.addEventListener('mouseenter', hover);
         divEp.addEventListener('mouseleave', leave);
-        /* divEp.addEventListener('click', abrir); */
+        divEp.addEventListener('click', abrir);
         divEp.classList.add('episode');
         let divImg = document.createElement('div');
         let divInfo = document.createElement('div');
         divImg.style.backgroundImage = `url('${imgUrl + episodeInfo.still_path}')`;
         divImg.classList.add('episodeImg');
-        if(window.getComputedStyle(document.querySelector('#btnEp button')).getPropertyValue('display') != 'none'){
+        if (window.getComputedStyle(document.querySelector('#btnEp button')).getPropertyValue('display') != 'none') {
             divImg.style.filter = 'grayscale(70%)';
         }
         divEp.appendChild(divImg);
@@ -358,8 +363,31 @@ function abrir(event) {
         epNum = event.target.parentElement.parentElement.parentElement.id;
     }
     iframe.src = `https://vidsrc.to/embed/tv/${movieId}/${seasons.value}/${epNum}`;
-    bgImg.classList.replace('fechadoImg', 'abertoImg');
-    iframe.classList.replace('iframeFechado', 'iframeAberto');
+    iframeDiv.style.height = '100vh';
+    iframeDiv.style.display = 'flex';
+    bgImg.style.height = 'fit-content';
+    bgImg.style.paddingTop = '2vw';
+
     mainHtml.classList.replace('top200', 'top');
 }
 
+function changeServer(event) {
+    if (!Array.from(event.target.classList).includes('serverSelected')) {
+        switch (event.target.id) {
+            case 'vidSrc':
+                iframe.src = `https://vidsrc.to/embed/tv/${movieId}/${seasons.value}/${epNum}`;
+                break;
+            case 'moviesAPI':
+                iframe.src = `https://moviesapi.club/tv/${movieId}-${seasons.value}-${epNum}`;
+                break;
+            case '2embed':
+                iframe.src = `https://www.2embed.cc/embedtv/${movieId}&s=${seasons.value}&e=${epNum}`;
+                break;
+            case 'smashyStream':
+                iframe.src = `https://embed.smashystream.com/playere.php?tmdb=${movieId}&season=${seasons.value}&episode=${epNum}`;
+                break;
+        }
+        document.querySelector('.serverSelected').classList.remove('serverSelected')
+        event.target.classList.add('serverSelected')
+    }
+}

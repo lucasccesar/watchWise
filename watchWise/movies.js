@@ -38,6 +38,7 @@ const search = document.getElementById('search'),
 /* Search show */
 searchBtn.addEventListener('click', () => {
     search.classList.add('show-search');
+    document.getElementById('searchInput').focus();
 });
 
 /* Search hidden */
@@ -269,7 +270,7 @@ async function showMovies(genre, index, element, genreId, type) {
         divMovies.classList.add('movie');
         divMovies.addEventListener('click', openR);
         divMovies.dataset.id = `${results[i].id}`;
-        divMovies.dataset.type = "movie";
+        divMovies.dataset.type = 'movie';
         let movieImgCount = 0;
         let movieImg = await fetch(`https://api.themoviedb.org/3/movie/${results[i].id}/images`, options).then((response) => response.json());
         for (let i = 0; i < movieImg.backdrops.length; i++) {
@@ -379,7 +380,7 @@ function constant() {
     loading.style.width = `${ms / 15}%`;
     if (ms / 15 == 100) {
         ms = 0;
-        if(window.getComputedStyle(document.getElementById('suggestions')).getPropertyValue('display') != 'none'){
+        if (window.getComputedStyle(document.getElementById('suggestions')).getPropertyValue('display') != 'none') {
             trocar();
         }
     }
