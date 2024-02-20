@@ -38,7 +38,6 @@ const search = document.getElementById('search'),
 /* Search show */
 searchBtn.addEventListener('click', () => {
     search.classList.add('show-search');
-    document.getElementById('searchInput').focus();
 });
 
 /* Search hidden */
